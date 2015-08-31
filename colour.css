@@ -1,0 +1,44 @@
+/*
+TEAMWORKER 1.0
+
+COLOURS
+*/
+
+
+/*BACKGROUNDS*/
+
+body, .grain{
+    background-color:#dadada;
+    background-image:url(_resources/15p-grey.jpg);
+}
+main{
+    background-color:white;
+}
+.mid{
+    background-color:#393939;
+}
+.dark{
+    background-color:#212121;
+}
+.accent{
+    background-color:#2785c7;
+}
+
+/*TEXT*/
+
+body, main, p, h1, h2, h3{
+    color:#393939;
+}
+em, .blue{
+    color:#2785c7;
+}
+
+/*BORDERS*/
+
+main{
+    border: 1px solid #a8aeaf;
+    border-top:none;
+}
+input{
+    border:1px solid #2785c7;
+}
