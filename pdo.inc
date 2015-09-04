@@ -6,5 +6,5 @@ $user = "capstone";
 $password = "teamw";
 
 
-$pdo = new PDO( "mysql:host=$host;dbname=$dbname", $user, $password);
+$db = new PDO( "mysql:host=$host;dbname=$dbname", $user, $password);
 ?>
