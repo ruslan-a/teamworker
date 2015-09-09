@@ -20,7 +20,7 @@ main{
 .dark{
     background-color:#212121;
 }
-.accent{
+.accent, ul.filters li, form#login input[type="submit"]{
     background-color:#2785c7;
 }
 
@@ -31,6 +31,9 @@ body, main, p, h1, h2, h3{
 }
 em, .blue{
     color:#2785c7;
+}
+ul.filters li, form#login input[type="submit"]{
+    color:white;
 }
 
 /*BORDERS*/

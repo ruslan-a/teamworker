@@ -30,6 +30,7 @@ h2{
     font-weight:300;
     font-size:1.5em;
     text-transform:uppercase;
+    margin:0;
 }
 h3{
     font-weight: 300;
@@ -95,7 +96,7 @@ input[type="text"], select{
     height:30px;
     appearance:none;
     padding:5px;
-    box-sizing:content-box;
+    box-sizing:border-box;
 }
 label.check{
     width:235px;
@@ -129,4 +130,72 @@ input[type="checkbox"]:checked + label{
 .half-dropdown select{
     width:100px;
     display:inline-block;
+}
+
+/*FILTER STYLES*/
+div.two{
+    display:inline-block;
+    vertical-align:top;
+    width:49%;
+    padding:0 20px;
+    box-sizing:border-box;
+}
+ul.filters{
+    list-style:none;
+    display:block;
+    text-transform: uppercase;
+    margin:0;
+    padding:0;
+}
+ul.filters li{
+    padding:0;
+    margin:10px;
+    text-align: center;
+    display:inline-block;
+    vertical-align:center;
+}
+ul.three li{
+    width:125px;
+    height:125px;
+    line-height:125px;
+}
+ul.four li{
+    width:88px;
+    height:88px;
+    line-height:88px;
+    font-size:2.2em;
+}
+ul.filters li span{
+    display:inline-block;
+    vertical-align: middle;
+    line-height:normal;
+}
+ul.filters li:first-child{
+    margin-left:0;
+}
+ul.filters li:last-child{
+    margin-right:0;
+}
+form#login label{
+    font-size:1.3em;
+}
+form#login label, form#login input{
+    width:440px;
+    margin:5px 10px;
+    display:inline-block;
+}
+form#login input{
+    height:30px;
+    box-sizing: border-box;
+    padding:3px;
+}
+form#login :nth-child(even){
+    margin-right:0;
+}
+form#login input[type="submit"]{
+    width:900px;
+    height:45px;
+    font-family: 'Lato', sans-serif;
+    font-size:1.3em;
+    text-transform: uppercase;
 }
