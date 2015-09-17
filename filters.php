@@ -15,7 +15,7 @@
 </head>
 <body>
 
-    <main>
+    <main class="filters">
         <?php include "header.inc"; ?>
         <div class="two">
             <h1>Left Column</h1>

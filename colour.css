@@ -14,25 +14,28 @@ body, .grain{
 main{
     background-color:white;
 }
-.mid{
+.mid, .glance,  .status .icon{
     background-color:#393939;
 }
-.dark{
+.dark, .progress-bar{
     background-color:#212121;
 }
-.accent, ul.filters li, form#login input[type="submit"]{
+.accent, ul.filters li, form#login input[type="submit"], th, .progress, .blue-square, .status .online .icon{
     background-color:#2785c7;
+}
+tr:nth-child(even){
+    background-color:#ddd;
 }
 
 /*TEXT*/
 
-body, main, p, h1, h2, h3{
+body, main{
     color:#393939;
 }
-em, .blue{
+em, .blue, .status .online, form.mini input[type="submit"]{
     color:#2785c7;
 }
-ul.filters li, form#login input[type="submit"]{
+ul.filters li, form#login input[type="submit"], th, .glance, .status .icon{
     color:white;
 }
 
