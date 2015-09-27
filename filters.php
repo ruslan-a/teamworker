@@ -19,6 +19,20 @@
         <?php include "header.inc"; ?>
         <div class="two">
             <h1>Left Column</h1>
+            <form id="searchForm" action="doSearch.php" method="POST">
+                <label for="skillField">Skill Keyword</label><br>
+                <input type="text" id="skillField" name="searchTerm" placeholder="skill" />
+                <br><br>
+                <label for="fieldSelect">Field of Expertise</label><br>
+                <select name="field" id="fieldSelect">
+                  <option value="web">Web Development</option>
+                  <option value="code">Programming</option>
+                  <option value="leader">Project Leadership</option>
+                  <option value="business">Business</option>
+                </select>
+                <br><br>
+                <input type="submit" />
+              </form>
             <h2>Three Column Filter List</h2>
             <ul class="filters three">
                 <li><span>Filter One</span></li>
