@@ -61,6 +61,10 @@ a:hover{
     opacity:0.8;
 }
 
+.message {
+    color: red;
+}
+
 
 /*HEADER STYLES*/
 header{

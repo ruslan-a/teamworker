@@ -1,3 +1,4 @@
+<?php include('userHandler.php') ?>
 <!DOCTYPE HTML>
 <html>
 <head>
