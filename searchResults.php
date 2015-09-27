@@ -1,3 +1,5 @@
+<?php include('searchHandler.php'); ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -5,7 +7,7 @@
     <!-- TEAMWORKER 1.0 -->
 
     <!-- TODO: meta -->
-    <title>TeamWorker</title>
+    <title>Search Results - TeamWorker</title>
 
     <!-- STYLESHEETS -->
     <link href='https://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
@@ -18,28 +20,21 @@
         <?php include "header.inc"; ?>
 
         <div class="content">
-            <h1>Curly Braces</h1>
+            <h1>Search Results</h1>
             <table>
                 <tr>
                     <th>Name</th>
-                    <th>Preferred Project</th>
+                    <th>Main Expertise</th>
                     <th>Actions</th>
                 </tr>
+                <?php foreach ($result as $a) { ?>
                 <tr>
-                    <td></td>
-                    <td></td>
+                    <td><?=$a['name']?></td>
+                    <td><?=convertMainAreaLabel($a['mainArea'])?></td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td>Mike</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Reginald</td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <?php } ?>
+
             </table>
         </div>
     </main>

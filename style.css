@@ -20,6 +20,15 @@ main{
     margin:0 20px;
 }
 
+.footer {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #fff;
+    background: #444;
+    text-align: right;
+}
+
 /*TEXT STYLES*/
 h1{
     font-weight:300;
@@ -28,13 +37,13 @@ h1{
 }
 h2{
     font-weight:300;
-    font-size:1.5em;
+    font-size:1.3em;
     text-transform:uppercase;
     margin:15px 0;
 }
 h3{
     font-weight: 300;
-    font-size: 1.2em;
+    font-size: 1.1em;
     text-transform: uppercase;
     margin:10px 0;
 }
@@ -65,7 +74,6 @@ nav{
     text-transform: uppercase;
     display:inline-block;
     float:right;
-    margin-top:20px;
 }
 nav ul{
     list-style:none;
@@ -80,6 +88,15 @@ nav li{
 }
 nav ul li:last-child{
     border-right:none;
+}
+
+.topNavProfile {
+    background: #444;
+    padding: 10px;
+}
+
+.topNavProfile a {
+    color: #fff;
 }
 
 /*FORM STYLES*/
@@ -131,6 +148,15 @@ input[type="checkbox"]:checked + label{
 .half-dropdown select{
     width:100px;
     display:inline-block;
+}
+
+.button {
+    display: inline-block;
+    padding: 5px;
+    text-transform: uppercase;
+    margin: 10px 0px 10px 0px;
+    color: #fff;
+    background-color: #2785c7;
 }
 
 /*FILTER STYLES*/

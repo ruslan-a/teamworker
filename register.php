@@ -6,7 +6,10 @@
 
 <body>
 	<h2>Register</h2>
-	<form id="mainForm" name="regoForm" action="doRegister.php" method="post"><br>
+	<?php if($_GET['error'] == "exists") {
+		echo "<h3>User with this email already exists!</h3>";
+	} ?>
+	<form id="mainForm" name="regoForm" action="login.php?action=register" method="post"><br>
 		<input type="text" name="name" placeholder="First Name" /><br>
 		<input type="text" name="dob" placeholder="Date of Birth (DD/MM/YY)" /><br>
 		<input type="text" name="email" placeholder="Your email" /><br>

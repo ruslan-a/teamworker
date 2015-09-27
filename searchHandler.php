@@ -12,9 +12,22 @@ $query = ('SELECT * FROM users WHERE mainArea = :mainArea');
 $statement = $db -> prepare($query);
 $statement -> bindValue(':mainArea', $mainArea);
 $statement -> execute();
-$result = $statement -> fetch(PDO::FETCH_ASSOC);
+$result = $statement -> fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($result as $a) {
-  echo $a."<br>";
+function convertMainAreaLabel($uglyName) {
+   switch($uglyName) {
+    case "business":
+      return "Business";
+      break;
+    case "web":
+      return "Web Development";
+      break;
+    case "leader":
+      return "Team Leadership";
+      break;
+    case "code";
+      return "Programming";
+      break;
+  }
 }
 ?>
