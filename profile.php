@@ -73,10 +73,10 @@
           <tr>
             <td>Area of Expertise</td> 
             <td><select name="mainArea" id="mainArea">
-              <option value="web" <?php if($areaExpertise == 'web'){echo("selected");}?>>Web Development</option>
-              <option value="code" <?php if($areaExpertise == 'code'){echo("selected");}?> >Programming</option>
-              <option value="leader" <?php if($areaExpertise == 'leader'){echo("selected");}?>>Project Leadership</option>
-              <option value="business" <?php if($areaExpertise == 'business'){echo("selected");}?>>Business</option>
+              <option value="Web Development" <?php if($areaExpertise == 'Web Development'){echo("selected");}?> >Web Development</option>
+              <option value="Programming" <?php if($areaExpertise == 'Programming'){echo("selected");}?> >Programming</option>
+              <option value="Project Leadership" <?php if($areaExpertise == 'Project Leadership'){echo("selected");}?> >Project Leadership</option>
+              <option value="Business" <?php if($areaExpertise == 'Business'){echo("selected");}?> >Business</option>
             </select></td>
           </tr>
           <tr>

@@ -124,6 +124,7 @@
                         Julie
                     </li>
                 </ul>
+                <a class="button" href="/list.php">See all members</a>
             </div>
             <div class="half">
                 <form class="mini">

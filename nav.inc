@@ -9,7 +9,7 @@
     ?>
   </div>
   <ul>
-    <li><a>group</a></li><li><a href="filters.php">find members</a></li>
+    <li><a href="list.php">group</a></li><li><a href="filters.php">find members</a></li>
   </ul>
   <!-- TODO I would like this to be dynamically filled from the database based on user role -->
 </nav>

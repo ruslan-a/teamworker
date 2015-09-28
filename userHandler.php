@@ -20,6 +20,7 @@
     $bio = $result['bio'];
     $gpa = $result['gpa'];
     $goal = $result['goal'];
+    $group = $result['currentGroup'];
     $skills = $result['skills']; // convert this into an array sometime 
   }
 ?>

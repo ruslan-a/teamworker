@@ -1,5 +1,5 @@
+<?php include('userHandler.php') ?>
 <?php include('searchHandler.php'); ?>
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -30,8 +30,8 @@
                 <?php foreach ($result as $a) { ?>
                 <tr>
                     <td><?=$a['name']?></td>
-                    <td><?=convertMainAreaLabel($a['mainArea'])?></td>
-                    <td></td>
+                    <td><?=$a['mainArea']?></td>
+                    <td><a class="button" href="list.php?action=add&amp;user=<?=$a['id']?>">Add to group</a></td>
                 </tr>
                 <?php } ?>
 

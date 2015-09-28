@@ -1,3 +1,13 @@
+<?php include('userHandler.php') ?>
+<?php include('groupHandler.php') ?>
+<?php
+    //action handler
+    if (isset($_GET['action']) && $_GET['action'] == 'remove') {
+        removeFromGroup($_GET['user'], $db, $group);
+    } else if (isset($_GET['action']) && $_GET['action'] == 'add') {
+        addToGroup($_GET['user'], $db, $group);
+    }
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -13,6 +23,8 @@
     <link href='colour.css' rel='stylesheet' type='text/css'>
 
 </head>
+
+
 <body>
     <main>
         <?php include "header.inc"; ?>
@@ -22,24 +34,19 @@
             <table>
                 <tr>
                     <th>Name</th>
-                    <th>Preferred Project</th>
+                    <th>Area of Expertise</th>
                     <th>Actions</th>
                 </tr>
+                <?php 
+                $myGroup = getGroup($db, $group);
+                foreach ($myGroup as $a) { 
+                    if($a['id'] != $_SESSION['id']) {?>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?=$a['name']?></td>
+                    <td><?=$a['mainArea']?></td>
+                    <td><a class="button" href="?action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a></td>
                 </tr>
-                <tr>
-                    <td>Mike</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Reginald</td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <?php }} ?>
             </table>
         </div>
     </main>

@@ -27,10 +27,10 @@
                 <label for="fieldSelect">Field of Expertise</label><br>
                 <select name="field" id="fieldSelect">
                   <option value="">Any</option>
-                  <option value="web">Web Development</option>
-                  <option value="code">Programming</option>
-                  <option value="leader">Project Leadership</option>
-                  <option value="business">Business</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="Programming">Programming</option>
+                  <option value="Project Leadership">Project Leadership</option>
+                  <option value="Business">Business</option>
                 </select>
                 <br><br>
                 <input type="submit" />
