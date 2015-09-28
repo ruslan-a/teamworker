@@ -1,4 +1,4 @@
-<?php include('userHandler.php') ?>
+<?php include('userHandler.php') ?> <!-- have this at the top of each page -->
 <!DOCTYPE HTML>
 <html>
 <head>
