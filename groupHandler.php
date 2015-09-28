@@ -25,6 +25,10 @@ function removeFromGroup($userId, $db, $group) {
 }
 
 function addToGroup($userId, $db, $group) {
+  if ($group == 0) {
+    echo "<meta http-equiv='REFRESH' content='0;url=createGroup.php'>";
+    return 0;
+  }
   $query = ('UPDATE users SET currentGroup = :group WHERE id = :userId');
   $statement = $db -> prepare($query);
   $statement -> bindValue(':userId', $userId);

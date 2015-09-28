@@ -27,7 +27,9 @@ if($_GET['action'] == "register") {
 <body>
 
   <main>
-    <?php include "header.inc"; ?>
+    <header>
+      <a href="/" id="logo"><img src="_resources/teamworker.png"></a>
+    </header>
     <div class="content">
       <h1>Log in</h1>
         <?php 

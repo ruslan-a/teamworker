@@ -30,6 +30,10 @@
         <?php include "header.inc"; ?>
 
         <div class="content">
+            <!-- make sure theyre in a group -->
+            <?php if ($group == 0) { 
+                echo "<h2>You're not in a group yet!</h2>";
+                } else { ?>
             <h1>Curly Braces</h1>
             <table>
                 <tr>
@@ -46,7 +50,7 @@
                     <td><?=$a['mainArea']?></td>
                     <td><a class="button" href="?action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a></td>
                 </tr>
-                <?php }} ?>
+                <?php }}} ?>
             </table>
         </div>
     </main>
