@@ -1,14 +1,12 @@
 <?php
-
 //log out handler code 
-if($_GET['action'] == "logout") {
-  echo "logging out";
+if(isset($_GET['action']) && $_GET['action'] == "logout") {
   if (session_status() === PHP_SESSION_NONE){session_start();}
   unset($_SESSION['id']);
 }
 
 // user registration handler code 
-if($_GET['action'] == "register") {
+if(isset($_GET['action']) && $_GET['action'] == "register") {
   include('registerHandler.inc');
 }
 ?>

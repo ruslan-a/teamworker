@@ -11,7 +11,7 @@
   <ul>
     <!-- change nav whether theyre in a group or not -->
     <?php if($group != 0) { ?>
-      <li><a href="list.php">group</a></li>
+      <li><a href="list.php">my group</a></li>
       <li><a href="filters.php">find members</a></li>
     <?php } ?>
     <?php if($group == 0) { ?>
