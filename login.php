@@ -32,7 +32,7 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
       <h1>Log in</h1>
         <?php 
           if (isset($_GET['error']) AND $_GET['error'] == 'true') {
-            echo "<h2>Wrong Login!</h2>";
+            echo "<h2 style='color: orange; text-transform: none;'>Wrong login, try again!</h2>";
           } else if (isset($_GET['action']) AND $_GET['action'] == 'register') {
             echo "<h2>Registration successful! Please log in.</h2>"; 
           }
