@@ -24,7 +24,7 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
 </head>
 <body>
 
-  <main>
+  <main class="login">
     <header>
       <a href="/" id="logo"><img src="_resources/teamworker.png"></a>
     </header>
@@ -40,9 +40,11 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
         
         <form id="login" name="myForm" action="doLogin.php" method="post">
           <label for="email">QUT email</label>
-          <label for="password">Password</label>
           <input type="email" name="email" placeholder="email" id="email">
-          <input type="password" name="password" placeholder="password" id="password"><br>
+          <br><br>
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="password" id="password">
+          <br><br>
           <input type="submit" value="Log in">
         </form>
     </div>

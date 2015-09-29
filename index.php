@@ -1,4 +1,5 @@
 <?php include('userHandler.php') ?> <!-- have this at the top of each page -->
+<?php echo 'session: '.$_SESSION['id'].'$id'.$id; ?>
 <!DOCTYPE HTML>
 <html>
 <head>

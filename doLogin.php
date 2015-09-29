@@ -15,7 +15,7 @@
 
   $dbPass = $result['password'];
 
-  if($dbPass == $password) {
+  if($dbPass == $password && $password != null) {
   	if (session_status() === PHP_SESSION_NONE){session_start();}
   	$_SESSION['id'] = $result['id'];
   	echo "<meta http-equiv='REFRESH' content='0;url=index.php?loggedin=true'>";

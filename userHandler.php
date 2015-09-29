@@ -13,6 +13,7 @@
     $statement -> execute();
     $result = $statement -> fetch(PDO::FETCH_ASSOC);
 
+    $userId = $_SESSION['id'];
     $userName = $result['name'];
     $userEmail = $result['email'];
     $dob = $result['dob'];
