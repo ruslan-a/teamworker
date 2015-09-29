@@ -10,7 +10,7 @@
     $query = ('SELECT * FROM users WHERE id = :id');
     $statement = $db -> prepare($query);
     $statement -> bindValue(':id', $sessionId);
-    $statement -> execute();
+    if (!$statement -> execute()) { print_r($statement->errorInfo()); }
     $result = $statement -> fetch(PDO::FETCH_ASSOC);
 
     $userId = $_SESSION['id'];
@@ -23,5 +23,16 @@
     $goal = $result['goal'];
     $group = $result['currentGroup'];
     $skills = $result['skills']; // convert this into an array sometime 
+  }
+
+  function getUserName($userId, $db) {
+    $query = ('SELECT name FROM users WHERE id = :userId');
+    $statement = $db -> prepare($query);
+    $statement -> bindValue(':userId', $userId);
+
+    // execute query and print error message if not
+    if (!$statement -> execute()) { print_r($stm->errorInfo());}
+    $result = $statement -> fetch(PDO::FETCH_ASSOC);
+    return $result['name'];
   }
 ?>

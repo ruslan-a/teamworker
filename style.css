@@ -389,3 +389,23 @@ form.mini input[type="submit"]{
     cursor:pointer;
     padding:0 5px;
 }
+
+.post {
+    border: solid 1px #ccc;
+    margin: 15px 0;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.post h4 {
+    margin: 0;
+}
+
+.post p {
+    margin: 5px 0;
+    text-transform: none;
+}
+
+.post .timestamp {
+    color: #ccc;
+}
