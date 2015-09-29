@@ -1,4 +1,5 @@
 <?php include('userHandler.php') ?> <!-- have this at the top of each page -->
+<?php include('groupHandler.php') ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -19,7 +20,7 @@
     <main>
         <?php include "header.inc"; ?>
         <div class="content">
-            <h1>Curly Braces</h1>
+            <h1><?php echo getGroupName($group, $db); ?></h1>
         </div>
         <div class="glance">
             <h3>Current Project Completion</h3>

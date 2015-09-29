@@ -38,4 +38,15 @@ function addToGroup($userId, $db, $group) {
   if (!$statement -> execute()) { print_r($stm->errorInfo());}
 }
 
+function getGroupName($groupId, $db) {
+  $query = ('SELECT name FROM groups WHERE id = :groupId');
+  $statement = $db -> prepare($query);
+  $statement -> bindValue(':groupId', $groupId);
+
+  // execute query and print error message if not
+  if (!$statement -> execute()) { print_r($stm->errorInfo());}
+  $result = $statement -> fetch(PDO::FETCH_ASSOC);
+  return $result['name'];
+}
+
 ?>

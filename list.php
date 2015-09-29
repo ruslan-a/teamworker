@@ -13,6 +13,7 @@
 <head>
 
     <!-- TEAMWORKER 1.0 -->
+    <!-- Group member list page -->
 
     <!-- TODO: meta -->
     <title>TeamWorker</title>
@@ -34,7 +35,7 @@
             <?php if ($group == 0) { 
                 echo "<h2>You're not in a group yet!</h2>";
                 } else { ?>
-            <h1>Curly Braces</h1>
+            <h1><?php echo getGroupName($group, $db); ?></h1>
             <table>
                 <tr>
                     <th>Name</th>
