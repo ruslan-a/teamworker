@@ -1,12 +1,6 @@
 <nav>
   <div class="topNavProfile">
-    <?php 
-      if(!isset($_SESSION['id'])) {
-        echo "<meta http-equiv='REFRESH' content='0;url=login.php'>";
-      } else {
-        echo "<a href='profile.php'>".$userName."</a>";
-      } 
-    ?>
+    <a href='profile.php'><?=$userName?></a>
   </div>
   <ul>
     <!-- change nav whether theyre in a group or not -->

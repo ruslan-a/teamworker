@@ -22,6 +22,7 @@ if(isset($_SESSION['id'])) {
   $gpa = $result['gpa'];
   $goal = $result['goal'];
   $group = $result['currentGroup'];
+  $groupLeader = $result['groupLeader'];
   $skills = $result['skills']; // convert this into an array sometime 
 }
 

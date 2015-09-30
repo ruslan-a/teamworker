@@ -16,8 +16,9 @@ main{
     height:auto;
     margin:0 auto;
 }
-.content{
-    margin:0 20px;
+.content {
+    margin: 20px;
+    overflow: auto;
 }
 
 .footer {
@@ -34,12 +35,20 @@ h1{
     font-weight:300;
     font-size:1.7em;
     text-transform:uppercase;
+    margin: 15px 0 0 0;
 }
 h2{
     font-weight:300;
     font-size:1.3em;
     text-transform:uppercase;
     margin:15px 0;
+}
+
+.subtitle {
+    color: #999;
+    font-size: 1em;
+    text-transform: none;
+    margin: 0;
 }
 h3{
     font-weight: 300;
@@ -63,6 +72,24 @@ a:hover{
 
 .message {
     color: red;
+}
+
+/*REUSABLE BITS*/
+.button {
+    display: inline-block;
+    padding: 5px;
+    text-transform: uppercase;
+    /*margin: 10px 0px 10px 0px;*/
+    color: #fff;
+    background-color: #2785c7;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
 }
 
 
@@ -154,14 +181,6 @@ input[type="checkbox"]:checked + label{
     display:inline-block;
 }
 
-.button {
-    display: inline-block;
-    padding: 5px;
-    text-transform: uppercase;
-    margin: 10px 0px 10px 0px;
-    color: #fff;
-    background-color: #2785c7;
-}
 
 /*FILTER STYLES*/
 div.two{
@@ -269,7 +288,8 @@ table{
     box-sizing:border-box;
     font-size:0;
     border-spacing:0;
-    margin-bottom:20px;
+    margin:20px 0;
+
 }
 th{
     text-transform:uppercase;
