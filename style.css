@@ -35,7 +35,10 @@ h1{
     font-weight:300;
     font-size:1.7em;
     text-transform:uppercase;
-    margin: 15px 0 0 0;
+    margin: 15px 0;
+}
+.content h1:first-child{
+    margin-top:0;
 }
 h2{
     font-weight:300;
@@ -147,6 +150,20 @@ input[type="text"], select{
     padding:5px;
     box-sizing:border-box;
 }
+input{
+    min-height:30px;
+}
+form:not(.mini) input[type="submit"]{
+    font-family:'Lato', sans-serif;
+    font-size:1em;
+    background-color:#2785c7;
+    color:white;
+    text-transform:uppercase;
+    padding:15px;
+    width:100%;
+    box-sizing: border-box;
+    margin:8px 0;
+}
 label.check{
     width:235px;
     font-size:0.8em;
@@ -179,6 +196,13 @@ input[type="checkbox"]:checked + label{
 .half-dropdown select{
     width:100px;
     display:inline-block;
+}
+textarea{
+    width:100%;
+    min-height:4em;
+    box-sizing:border-box;
+    resize:vertical;
+    border:1px solid #2785c7;
 }
 
 
