@@ -24,6 +24,7 @@ if(isset($_SESSION['id'])) {
   $group = $result['currentGroup'];
   $groupLeader = $result['groupLeader'];
   $skills = $result['skills']; // convert this into an array sometime 
+  $role = $result['permissions'];
 }
 
 // Returns the name of a user from their ID. 
@@ -40,6 +41,18 @@ function getUserName($userId, $db) {
    $result = $statement -> fetch(PDO::FETCH_ASSOC);
    return $result['name']; 
   }
-  
+}
+
+function getUserId($userName, $db) {
+  $query = ('SELECT id FROM users WHERE name = :userName');
+  $statement = $db -> prepare($query);
+  $statement -> bindValue(':userName', $userName);
+
+  // execute query and print error message if not
+  if (!$statement -> execute()) { print_r($stm->errorInfo()); 
+  } else {
+   $result = $statement -> fetch(PDO::FETCH_ASSOC);
+   return $result['id']; 
+  }
 }
 ?>

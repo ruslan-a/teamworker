@@ -1,5 +1,6 @@
  <?php 
   include_once 'pdo.inc';
+  include_once 'userHandler.php';
 
   $name = strip_tags($_POST['name']);
   $dob = strip_tags($_POST['dob']);
@@ -16,11 +17,19 @@
   $qString = ('INSERT INTO users (email, password, name, dob) VALUES (:email, :password, :name, :dob)');
   $stm = $db -> prepare($qString);
 
-  $stm -> execute(
-    array(              
+  
+
+
+  if (!$stm -> execute(array(              
       ':email' => $email,
       ':password' => $pass,
       ':name' => $name,
-      ':dob' => $dob
-    ));
+      ':dob' => $dob))) 
+  {
+    print_r($statement->errorInfo());
+    echo "<meta http-equiv='REFRESH' content='0;url=/register.php?error=db'>";
+  } else {
+    $_SESSION['id'] = getUserId($name, $db);
+    echo "<meta http-equiv='REFRESH' content='0;url=/profile.php'>";
+  }
 ?>

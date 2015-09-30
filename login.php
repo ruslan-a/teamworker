@@ -30,6 +30,7 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
     </header>
     <div class="content">
       <h1>Log in</h1>
+      <br>
       <?php 
         if (isset($_GET['error']) AND $_GET['error'] == 'true') {
           echo "<h2 style='color: orange; text-transform: none;'>Wrong login, try again!</h2>";
@@ -44,7 +45,7 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
         <br><br>
         <label for="password">Password</label>
         <input type="password" name="password" placeholder="password" id="password">
-        <br><br>
+        <br><br><a href="register.php" class="subtitle">No account yet? Sign up now!</a><br><br>
         <input type="submit" value="Log in">
       </form>
     </div>
