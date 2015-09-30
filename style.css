@@ -474,3 +474,10 @@ form.mini input[type="submit"]{
 .post .timestamp {
     color: #ccc;
 }
+
+/*ADMIN STYLES*/
+div.bulletin{
+    padding:15px;
+    background-color:#ddd;
+    font-size:1.3em;
+}
