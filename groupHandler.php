@@ -15,7 +15,7 @@ $result = $statement -> fetchAll(PDO::FETCH_ASSOC);
 return $result;
 }
 
-function createGroup($groupName, $description, $db) {
+function createGroup($groupName, $description, $userId, $db) {
    // creates a group and adds the current user to it 
   strip_tags($groupName);
   strip_tags($description);
@@ -30,18 +30,15 @@ function createGroup($groupName, $description, $db) {
   $qString = ('INSERT INTO groups (name, description) VALUES (:name, :description)');
   $stm = $db -> prepare($qString);
 
-  if ($stm -> execute(
-    array(              
-      ':name' => $groupName,
-      ':description' => $description
-    ))) {
-    if(addToGroup($userId, $db, getGroupId($groupName), true)) {
+  if ($stm -> execute( array(':name' => $groupName, ':description' => $description))) {
+    if(addToGroup($userId, $db, getGroupId($groupName, $db), true)) {
       echo "<meta http-equiv='REFRESH' content='0;url=/list.php'>";
     } else {
       echo 'couldnt add to group!';
     }
   } else {
-    echo "<meta http-equiv='REFRESH' content='0;url=?error=db'>";
+    print_r($stm->errorInfo());
+    //echo "<meta http-equiv='REFRESH' content='0;url=?error=db'>";
   }
 }
 

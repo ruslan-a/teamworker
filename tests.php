@@ -1,7 +1,7 @@
 <?php 
   include 'pdo.inc';
 
-  testNewPost($db);
+  // testNewPost($db);
 
   function testGetGroupId() {
     include 'groupHandler.php';
@@ -12,6 +12,11 @@
     include 'postHandler.php';
     echo createNewPost($db, 12, 1, 'hello ass');
   }
+
+  include 'groupHandler.php';
+  addToGroup(1, $db, 1, true);
+
+ 
 ?>
 <link rel="stylesheet" href="style.css" />
 <br>

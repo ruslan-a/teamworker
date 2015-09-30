@@ -5,10 +5,11 @@
 
 if(isset($_GET['error']) && $_GET['error'] == 'db') {
   echo 'some sort of db error, try again maybe?';
+  echo $_POST['error'];
 }
 
 if(isset($_GET['action']) && $_GET['action'] == "create") {
-  createGroup($_POST['name'], $_POST['description'], $db);
+  createGroup($_POST['name'], $_POST['description'], $userId, $db);
 } else { ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
