@@ -1,5 +1,13 @@
-<?php include('userHandler.php') ?> <!-- have this at the top of each page -->
-<?php include('groupHandler.php') ?>
+<?php include_once 'userHandler.php';
+  include_once 'groupHandler.php';
+  include_once 'postHandler.php';
+
+  // action handlers
+  if(isset($_GET['action']) && $_GET['action'] == 'newPost') {
+    createNewPost($db, $group, $userId, $_POST['content']);
+  }
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -141,14 +149,14 @@
         </form>
         
         <h2>Posts</h2>
+        <form action="?action=newPost" method="post">
+          <textarea name="content" placeholder="What's on your mind?"></textarea>
+          <input type="submit">
+        </form>
         <?php 
-          $query = ('SELECT * FROM messages WHERE groupId = :groupId');
-          $statement = $db -> prepare($query);
-          $statement -> bindValue(':groupId', $group);
-          if (!$statement -> execute()) { print_r($statement->errorInfo()); }
-          $result = $statement -> fetchAll(PDO::FETCH_ASSOC);
+          $groupPosts = getGroupPosts($db, $group);
           
-          foreach ($result as $a) { ?>
+          foreach ($groupPosts as $a) { ?>
             <div class="post">
               <h4><?php echo getUserName($a['userId'], $db); ?></h4>
               <p><?=$a['content'];?></p>

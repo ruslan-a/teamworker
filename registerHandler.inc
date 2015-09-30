@@ -1,8 +1,5 @@
  <?php 
   include_once 'pdo.inc';
-  
-  error_reporting(E_ALL);
-  ini_set('display_errors', 1);
 
   $name = strip_tags($_POST['name']);
   $dob = strip_tags($_POST['dob']);

@@ -1,4 +1,7 @@
 <?php
+include_once('pdo.inc');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 //returns currently logged in user's group members
 //needs DB reference and user's $group
 function getGroup($db, $group) {
@@ -35,7 +38,9 @@ function addToGroup($userId, $db, $group) {
   $statement -> bindValue(':group', $group);
 
   // execute query and print error message if not
-  if (!$statement -> execute()) { print_r($stm->errorInfo());}
+  if (!$statement -> execute()) { return print_r($stm->errorInfo(), true);} else {
+    return true;
+  }
 }
 
 function getGroupName($groupId, $db) {
@@ -47,6 +52,17 @@ function getGroupName($groupId, $db) {
   if (!$statement -> execute()) { print_r($stm->errorInfo());}
   $result = $statement -> fetch(PDO::FETCH_ASSOC);
   return $result['name'];
+}
+
+function getGroupId($groupName, $db) {
+  $query = ('SELECT id FROM groups WHERE name = :groupName');
+  $statement = $db -> prepare($query);
+  $statement -> bindValue(':groupName', $groupName);
+
+  // execute query and print error message if not
+  if (!$statement -> execute()) { print_r($stm->errorInfo());}
+  $result = $statement -> fetch(PDO::FETCH_ASSOC);
+  return $result['id'];
 }
 
 ?>
