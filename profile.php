@@ -7,10 +7,7 @@
   <!-- TODO: meta -->
   <title>Profile - TeamWorker</title>
 
-  <!-- STYLESHEETS -->
-  <link href='https://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
-  <link href='style.css' rel='stylesheet' type='text/css'>
-  <link href='colour.css' rel='stylesheet' type='text/css'>
+  <?php include "stylesheets.inc"; ?>
   <script src='jquery.js' type='text/javascript'></script>
 </head>
 <body>
@@ -71,7 +68,7 @@
             <td>Date of Birth</td> <td><input type="text" name="dob" value="<?=$dob?>"></td>
           </tr>
           <tr>
-            <td>Area of Expertise</td> 
+            <td>Area of Expertise</td>
             <td><select name="mainArea" id="mainArea">
               <option value="Web Development" <?php if($areaExpertise == 'Web Development'){echo("selected");}?> >Web Development</option>
               <option value="Programming" <?php if($areaExpertise == 'Programming'){echo("selected");}?> >Programming</option>

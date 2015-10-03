@@ -8,10 +8,7 @@
   <!-- TODO: meta -->
   <title>TeamWorker</title>
 
-  <!-- STYLESHEETS -->
-  <link href='https://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
-  <link href='style.css' rel='stylesheet' type='text/css'>
-  <link href='colour.css' rel='stylesheet' type='text/css'>
+  <?php include "stylesheets.inc"; ?>
 
 </head>
 <body>
@@ -135,15 +132,15 @@
           <input type="text">
           <input type="submit" value="+">
         </form>
-        
+
         <h2>Posts</h2>
         <form action="?action=newPost" method="post">
           <textarea name="content" placeholder="What's on your mind?"></textarea>
           <input type="submit">
         </form>
-        <?php 
+        <?php
           $groupPosts = getGroupPosts($db, $group);
-          
+
           foreach ($groupPosts as $a) { ?>
             <div class="post">
               <h4><?php echo getUserName($a['userId'], $db); ?></h4>

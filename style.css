@@ -143,15 +143,15 @@ label{
     margin:0 0 16px 0;
     text-transform: uppercase;
 }
-input[type="text"], select{
+input[type="text"], input[type="date"], input[type="email"], select{
     width:560px;
     height:30px;
     appearance:none;
-    padding:5px;
     box-sizing:border-box;
 }
 input{
     min-height:30px;
+    padding:5px;
 }
 form:not(.mini) input[type="submit"]{
     font-family:'Lato', sans-serif;
@@ -189,11 +189,11 @@ input[type="checkbox"] + label{
 input[type="checkbox"]:checked + label{
     background:url(_resources/checkbox.png) -20px top no-repeat;
 }
-.half-dropdown{
+.half-dropdown, .half-input{
     display:inline-block;
     margin-right:3px;
 }
-.half-dropdown select{
+.half-dropdown select, .half-input input{
     width:100px;
     display:inline-block;
 }
