@@ -14,7 +14,8 @@ if(isset($_SESSION['id'])) {
   $result = $statement -> fetch(PDO::FETCH_ASSOC);
 
   $userId = $_SESSION['id'];
-  $userName = $result['name'];
+  $realName = $result['name'];
+  $userName = $result['displayName'];
   $userEmail = $result['email'];
   $dob = $result['dob'];
   $areaExpertise = $result['mainArea'];

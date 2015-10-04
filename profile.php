@@ -29,6 +29,9 @@
       <a class="button" onclick="showEditor()">Edit</a>
       <table>
         <tr>
+          <td>Real Name</td> <td><?=$realName?></td>
+        </tr>
+        <tr>
           <td>Display Name</td> <td><?=$userName?></td>
         </tr>
         <tr>
@@ -65,7 +68,10 @@
       <form id="profile" name="profile" action="profile.php?action=edit" method="post">
         <table>
           <tr>
-            <td>Display Name</td> <td><input type="text" name="username" value="<?=$userName?>"></td>
+            <td>Real Name</td> <td><input type="text" name="username" value="<?=$realName?>"></td>
+          </tr>
+          <tr>
+            <td>Display Name</td> <td><input type="text" name="displayname" value="<?=$userName?>"></td>
           </tr>
           <tr>
             <td>Date of Birth</td> <td><input type="text" name="dob" value="<?=$dob?>"></td>
