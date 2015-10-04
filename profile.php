@@ -71,7 +71,7 @@
             <td>Display Name</td> <td><input type="text" name="displayname" value="<?=$userName?>"></td>
           </tr>
           <tr>
-            <td>Date of Birth</td> <td><input type="text" name="dob" value="<?=$dob?>"></td>
+            <td>Date of Birth</td> <td><input type="date" name="dob" value="<?=$dob?>" min="1915-01-01" max="2000-01-01"></td>
           </tr>
           <tr>
             <td>Area of Expertise</td>

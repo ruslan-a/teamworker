@@ -3,6 +3,7 @@
   include_once 'userHandler.php';
 
   $name = strip_tags($_POST['name']);
+  $username = strip_tags($_POST['username']);
   $dob = strip_tags($_POST['dob']);
   $email = strip_tags($_POST['email']);
   $pass = hash('sha256', $_POST['password']);
@@ -14,14 +15,12 @@
 //        header('Location: /register.php?error=exists');
 //   }
 
-  $qString = ('INSERT INTO users (email, password, name, dob) VALUES (:email, :password, :name, :dob)');
+  $qString = ('INSERT INTO users (email, displayName, password, name, dob) VALUES (:email, :displayName, :password, :name, :dob)');
   $stm = $db -> prepare($qString);
-
-  
-
 
   if (!$stm -> execute(array(              
       ':email' => $email,
+      ':displayName' => $username,
       ':password' => $pass,
       ':name' => $name,
       ':dob' => $dob))) 

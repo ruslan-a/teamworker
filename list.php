@@ -41,7 +41,7 @@
           foreach ($myGroup as $a) {
         ?>
           <tr>
-            <td><?=$a['name']?></td>
+            <td><?=$a['displayName']?></td>
             <td><?=$a['mainArea']?></td>
             <td>
             <?php if($a['id'] != $_SESSION['id'] && $groupLeader == true) { // check if person is self or leader dont display remove button ?>
