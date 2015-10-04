@@ -18,11 +18,7 @@
   <!-- TODO: meta -->
   <title>TeamWorker</title>
 
-  <!-- STYLESHEETS -->
-  <link href='https://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
-  <link href='style.css' rel='stylesheet' type='text/css'>
-  <link href='colour.css' rel='stylesheet' type='text/css'>
-
+  <?php include "stylesheets.inc"; ?>
 </head>
 
 
@@ -32,9 +28,9 @@
 
     <div class="content">
       <!-- make sure theyre in a group -->
-      <?php if ($group == 0) { 
+      <?php if ($group == 0) {
         echo "<h2>You're not in a group yet!</h2>";
-        } else { 
+        } else {
         $myGroup = getGroup($db, $group);
       ?>
       <h1><?php echo getGroupName($group, $db); ?></h1>
@@ -42,7 +38,7 @@
       <table>
         <tr>    <th>Name</th>   <th>Area of Expertise</th>  <th>Actions</th>    </tr>
         <?php // start looping through group members
-          foreach ($myGroup as $a) { 
+          foreach ($myGroup as $a) {
         ?>
           <tr>
             <td><?=$a['name']?></td>

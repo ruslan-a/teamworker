@@ -15,10 +15,7 @@ if(isset($_GET['action']) && $_GET['action'] == "create") {
 <html>
 <head>
   <title>Create a Group - Teamworker</title>
-  <!-- STYLESHEETS -->
-  <link href='https://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
-  <link href='style.css' rel='stylesheet' type='text/css'>
-  <link href='colour.css' rel='stylesheet' type='text/css'>
+  <?php include "stylesheets.inc"; ?>
 </head>
 
 <body>
