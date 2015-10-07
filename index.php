@@ -23,7 +23,7 @@ if(!isset($_SESSION['id'])) {
   if($role == 1) {
     include 'studentHome.php';
   } else if ($role == 3) {
-    include 'adminHome.php';
+    include 'admin.php';
   }  
 } 
 ?>

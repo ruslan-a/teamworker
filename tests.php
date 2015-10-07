@@ -1,8 +1,6 @@
 <?php 
   include 'pdo.inc';
 
-  // testNewPost($db);
-
   function testGetGroupId() {
     include 'groupHandler.php';
     echo getGroupId('cool cat group', $db);
@@ -15,8 +13,6 @@
 
   include 'groupHandler.php';
   addToGroup(1, $db, 1, true);
-
- 
 ?>
 <link rel="stylesheet" href="style.css" />
 <br>

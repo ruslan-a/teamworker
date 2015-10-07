@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-
     <!-- TEAMWORKER 1.0 -->
 
     <title>TeamWorker</title>
@@ -40,7 +39,8 @@
                 <th>Group</th>
                 <th>Notes</th>
             </tr>
+        </table>
     </main>
-
+    <?php include 'footer.php' ?>
 </body>
 </html>
