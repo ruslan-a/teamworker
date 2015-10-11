@@ -10,20 +10,18 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
   include('registerHandler.inc');
 }
 ?>
+<!doctype html>
+<html lang="en">
 <head>
   <!-- TEAMWORKER 1.0 -->
-
-  <!-- TODO: meta -->
+  <meta charset="utf-8">
   <title>TeamWorker</title>
-
   <?php include "stylesheets.inc"; ?>
-
 </head>
 <body>
-
   <main class="login">
     <header>
-      <a href="/" id="logo"><img src="_resources/teamworker.png"></a>
+      <a href="/" id="logo"><img src="_resources/teamworker.png" alt="TeamWorker"></a>
     </header>
     <div class="content">
       <h1>Log in</h1>
@@ -35,7 +33,6 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
           echo "<h2>Registration successful! Please log in.</h2>";
         }
       ?>
-
       <form id="login" name="myForm" action="doLogin.php" method="post">
         <label for="email">QUT email</label>
         <input type="email" name="email" placeholder="email" id="email">
@@ -47,6 +44,5 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
       </form>
     </div>
   </main>
-
 </body>
 </html>
