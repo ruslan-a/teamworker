@@ -26,7 +26,6 @@
 <body>
   <main>
     <?php include "header.inc"; ?>
-
     <div class="content">
       <!-- make sure theyre in a group -->
       <?php if ($group == 0) {
@@ -34,23 +33,10 @@
         } else {
         $myGroup = getGroup($db, $group);
       ?>
-      <h1><?php echo getGroupName($group, $db); ?></h1>
-      <h2 class="subtitle"><?php echo sizeof($myGroup) ?> members</h2>
-      <table>
-        <tr>    <th>Name</th>   <th>Area of Expertise</th>  <th>Actions</th>    </tr>
-        <?php // start looping through group members
-          foreach ($myGroup as $a) {
-        ?>
-          <tr>
-            <td><?=$a['displayName']?></td>
-            <td><?=$a['mainArea']?></td>
-            <td>
-            <?php if($a['id'] != $_SESSION['id'] && $groupLeader == true) { // check if person is self or leader dont display remove button ?>
-            <a class="button" href="?action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a>
-            <?php } // end check for self, leader ?></td>
-          </tr>
-        <?php  } // end looping through group members ?>
-      </table>
+      <h1><?php echo getGroupName($group, $db);?></h1>
+      <h2 class="subtitle">
+      <?php echo getGroupDescription($group, $db)."<br>".getGroupType($group, $db)."<br>".sizeof($myGroup) ?> members</h2>
+      <?php renderGroupList($db, $group, $groupLeader); ?>
       <a class="button right" href="?action=remove&amp;user=<?=$userId?>" onclick="return confirm('Leave <?php echo getGroupName($group, $db); ?>?')">Leave Group</a>
       <a class="button left" href="/">Back Home</a>
       <?php } // end if?>

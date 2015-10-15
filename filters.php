@@ -32,20 +32,8 @@
                 <br><br>
                 <input type="submit" />
               </form>
-            <h2>Three Column Filter List</h2>
-            <ul class="filters three">
-                <li><span>Filter One</span></li>
-                <li><span>Filter Two</span></li>
-                <li><span>Filter Three</span></li>
-            </ul>
-            <h2>Four Column Filter List</h2>
-            <ul class="filters four">
-                <li><span>1</span></li>
-                <li><span>2</span></li>
-                <li><span>3</span></li>
-                <li><span>4</span></li>
-            </ul>
         </div>
+        <?php include 'footer.php' ?>
     </main>
 
 </body>

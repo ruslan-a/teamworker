@@ -93,4 +93,89 @@ function getGroupId($groupName, $db) {
   return $result['id'];
 }
 
-?>
+function getGroupDescription($groupId, $db) {
+  $query = ('SELECT description FROM groups WHERE id = :groupId');
+  $statement = $db -> prepare($query);
+  $statement -> bindValue(':groupId', $groupId);
+
+  // execute query and print error message if not
+  if (!$statement -> execute()) { print_r($stm->errorInfo());}
+  $result = $statement -> fetch(PDO::FETCH_ASSOC);
+  return $result['description'];
+}
+
+function getGroupType($groupId, $db) {
+  $query = ('SELECT projectType FROM groups WHERE id = :groupId');
+  $statement = $db -> prepare($query);
+  $statement -> bindValue(':groupId', $groupId);
+
+  // execute query and print error message if not
+  if (!$statement -> execute()) { print_r($stm->errorInfo());}
+  $result = $statement -> fetch(PDO::FETCH_ASSOC);
+  return $result['projectType'];
+}
+
+
+
+// List of group members + details and options
+function renderGroupList($db, $group, $groupLeader) { ?>
+      <table>
+        <tr>    <th>Name</th>   <th>Area of Expertise</th>  <th>Actions</th>    </tr>
+        <?php // start looping through group members
+          foreach (getGroup($db, $group) as $a) {
+        ?>
+          <tr>
+            <td>
+              <?php   
+                if($a['displayName'] == "") {
+                    echo $a['name'];
+                  } else {
+                    echo $a['displayName'];
+                  } 
+              ?>
+            </td>
+            <td><?=$a['mainArea']?></td>
+            <td>
+            <?php if($a['id'] != $_SESSION['id'] && $groupLeader == true) { // check if person is self or leader dont display remove button ?>
+            <a class="button" href="?action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a>
+            <?php } // end check for self, leader ?></td>
+          </tr>
+        <?php  } // end looping through group members ?>
+      </table>
+<?php } ?>
+
+
+
+<?php 
+// List of group members showing only their names
+// Currently used on the student home page
+function renderSmallGroupList($db, $group, $groupLeader) { ?>
+    <div class="content">
+      <!-- make sure theyre in a group -->
+      <?php if ($group == 0) {
+        echo "<h2>You're not in a group yet!</h2>";
+        } else {
+        $myGroup = getGroup($db, $group);
+      ?>
+      <h2 class="subtitle"><?php echo sizeof($myGroup) ?> members</h2>
+      <table>
+        <?php // start looping through group members
+          foreach ($myGroup as $a) {
+        ?>
+          <tr>
+            <td>
+              <?php   
+                if($a['displayName'] == "") {
+                    echo $a['name'];
+                  } else {
+                    echo $a['displayName'];
+                  } 
+              ?>
+            </td>
+          </tr>
+        <?php  } // end looping through group members ?>
+      </table>
+      <a class="button left" href="/list.php">Manage Group</a>
+      <?php } // end if?>
+    </div>
+<?php } ?>
