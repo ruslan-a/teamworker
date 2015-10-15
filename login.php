@@ -34,11 +34,11 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
         }
       ?>
       <form id="login" name="myForm" action="doLogin.php" method="post">
-        <label for="email">QUT email</label>
-        <input type="email" name="email" placeholder="email" id="email">
+        <label for="email">Student ID</label>
+        <input type="number" name="email" placeholder="8623881" id="email">
         <br><br>
         <label for="password">Password</label>
-        <input type="password" name="password" placeholder="password" id="password">
+        <input type="password" name="password" placeholder="********" id="password">
         <br><br><a href="register.php" class="subtitle">No account yet? Sign up now!</a><br><br>
         <input type="submit" value="Log in">
       </form>

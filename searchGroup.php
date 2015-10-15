@@ -2,7 +2,7 @@
 <?php 
 
 if (isset($_GET['a']) && $_GET['a'] == "search") {
-    showSearchResults();
+    showSearchResults($db);
 } else {
     showSearchForm($userName, $group);
 }
@@ -31,7 +31,7 @@ function showSearchForm($userName, $group) {
                 <label for="skillField">Keywords</label><br>
                 <input type="text" id="skillField" name="searchTerm" placeholder="skill" />
                 <br><br>
-                <label for="fieldSelect">Field of Expertise</label><br>
+                <label for="fieldSelect">Project Type</label><br>
                 <select name="field" id="fieldSelect">
                   <option value="">Any</option>
                   <option value="Web Development">Web Development</option>
@@ -50,7 +50,20 @@ function showSearchForm($userName, $group) {
 
 <?php } 
 
-function showSearchResults() { ?>
-asdfs
+function showSearchResults($db) { ?>
+<?php
+$searchTerm = $_POST['searchTerm']; 
+$mainArea = $_POST['field'];
+
+$query = ('SELECT * FROM users WHERE mainArea = :mainArea AND currentGroup = 0');
+$statement = $db -> prepare($query);
+$statement -> bindValue(':mainArea', $mainArea);
+
+$statement -> execute();
+$result = $statement -> fetchAll(PDO::FETCH_ASSOC);
+echo $result['id'];
+?>
+
+
 <?php }
 ?>

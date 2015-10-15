@@ -4,6 +4,7 @@
   //action handler
   if (isset($_GET['action']) && $_GET['action'] == 'remove') {
     removeFromGroup($_GET['user'], $db, $group);
+    echo "<meta http-equiv='REFRESH' content='0;url=index.php'>";
   } else if (isset($_GET['action']) && $_GET['action'] == 'add') {
     addToGroup($_GET['user'], $db, $group, false);
   }

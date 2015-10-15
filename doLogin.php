@@ -8,7 +8,7 @@
     $email = $_POST['email'];
     $password = hash('sha256', $_POST['password']);
 
-    $query = ('SELECT * FROM users WHERE email = :email');
+    $query = ('SELECT * FROM users WHERE studentID = :email');
     $statement = $db -> prepare($query);
     $statement -> bindValue(':email', $email);
     $statement -> execute();

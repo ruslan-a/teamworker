@@ -15,7 +15,12 @@ if(isset($_SESSION['id'])) {
 
   $userId = $_SESSION['id'];
   $realName = $result['name'];
-  $userName = $result['displayName'];
+  
+  if($result['displayName'] == "") {
+    $userName = $realName;
+  } else {
+    $userName = $result['displayName'];
+  }
   $userEmail = $result['email'];
   $dob = $result['dob'];
   $areaExpertise = $result['mainArea'];
