@@ -17,6 +17,7 @@ if(isset($_GET['action']) && $_GET['action'] == "register") {
   <meta charset="utf-8">
   <title>TeamWorker</title>
   <?php include "stylesheets.inc"; ?>
+  
 </head>
 <body>
   <main class="login">

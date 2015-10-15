@@ -23,6 +23,7 @@
 				<label for="username">Display Name</label><input type="text" name="username" id="username" placeholder="Display Name" minlength="2" required/>
 				<label for="dob">Your date of Birth</label><input type="date" min="1915-01-01" max="2000-01-01" name="dob" id="dob" placeholder="DD/MM/YYYY" required/>
 				<label for="email">Your QUT Email address</label><input type="email" id="email" name="email" placeholder="yourname@student.qut.edu.au" required/>
+				<label for="email">Your QUT Student ID</label><input type="number" id="studentID" name="studentID" placeholder="8623881" maxlength="7" required/>
 				<div class="half-input">
 					<label for="password">Password</label><input type="password" id="password" name="password" placeholder="Password" required/>
 					<label for="confirm">Confirm Password</label><input type="password" id="confirm" name="confirm" placeholder="Password again" required/>
