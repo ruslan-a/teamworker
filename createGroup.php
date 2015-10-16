@@ -9,7 +9,7 @@ if(isset($_GET['error']) && $_GET['error'] == 'db') {
 }
 
 if(isset($_GET['action']) && $_GET['action'] == "create") {
-  createGroup($_POST['name'], $_POST['description'], $userId, $db);
+  createGroup($_POST['name'], $_POST['description'], $_POST['type'], $userId, $db);
 } else { ?>
 <!DOCTYPE html>
 <html>

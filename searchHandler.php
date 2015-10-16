@@ -2,7 +2,14 @@
 $searchTerm = $_POST['searchTerm']; 
 $mainArea = $_POST['field'];
 
-$query = ('SELECT * FROM users WHERE mainArea = :mainArea AND currentGroup = 0');
+
+if($mainArea == "") {
+  $query = ('SELECT * FROM users WHERE currentGroup = 0'); 
+} 
+else {
+  $query = ('SELECT * FROM users WHERE mainArea = :mainArea AND currentGroup = 0'); 
+}
+
 $statement = $db -> prepare($query);
 $statement -> bindValue(':mainArea', $mainArea);
 

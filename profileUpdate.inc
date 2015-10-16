@@ -13,10 +13,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
   $newDob = strip_tags($_POST['dob']);
   $newMainArea = strip_tags($_POST['mainArea']);
   $newGpa = strip_tags($_POST['gpa']);
+  $newSkills = strip_tags($_POST['skills']);
   $newGoal = strip_tags($_POST['goal']);
   $newBio = strip_tags($_POST['bio']);
 
-  $qString = ('UPDATE users SET name = :name, displayName = :displayname, dob = :dob, mainArea = :mainArea, gpa = :gpa, goal = :goal, bio = :bio WHERE id = :id');
+  $qString = ('UPDATE users SET name = :name, displayName = :displayname, dob = :dob, mainArea = :mainArea, skills = :skills, gpa = :gpa, goal = :goal, bio = :bio WHERE id = :id');
   $stm = $db -> prepare($qString);
 
   if (!$stm -> execute(array(    
@@ -24,6 +25,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
       ':displayname' => $newDisplayName,
       ':dob' => $newDob,
       ':mainArea' => $newMainArea,
+      ':skills' => $newSkills,
       ':gpa' => $newGpa,
       ':goal' => $newGoal,
       ':bio' => $newBio,

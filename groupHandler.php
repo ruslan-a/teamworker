@@ -15,10 +15,11 @@ $result = $statement -> fetchAll(PDO::FETCH_ASSOC);
 return $result;
 }
 
-function createGroup($groupName, $description, $userId, $db) {
+function createGroup($groupName, $description, $type, $userId, $db) {
    // creates a group and adds the current user to it 
   strip_tags($groupName);
   strip_tags($description);
+  strip_tags($type);
 
 // tHIS IS BROKEN FIX IT
 //    $checkIfEmailExists = mysql_query("SELECT email from users WHERE email = '$email'");
@@ -27,10 +28,38 @@ function createGroup($groupName, $description, $userId, $db) {
 //        header('Location: /register.php?error=exists');
 //   }
 
-  $qString = ('INSERT INTO groups (name, description) VALUES (:name, :description)');
+  $qString = ('INSERT INTO groups (name, description, projectType) VALUES (:name, :description, :type)');
   $stm = $db -> prepare($qString);
 
-  if ($stm -> execute( array(':name' => $groupName, ':description' => $description))) {
+  if ($stm -> execute( array(':name' => $groupName, ':description' => $description, ':type' => $type))) {
+    if(addToGroup($userId, $db, getGroupId($groupName, $db), true)) {
+      echo "<meta http-equiv='REFRESH' content='0;url=/list.php'>";
+    } else {
+      echo 'couldnt add to group!';
+    }
+  } else {
+    print_r($stm->errorInfo());
+    //echo "<meta http-equiv='REFRESH' content='0;url=?error=db'>";
+  }
+}
+
+function updateGroup($groupId, $groupName, $description, $type, $db) {
+   // creates a group and adds the current user to it 
+  strip_tags($groupName);
+  strip_tags($description);
+  strip_tags($type);
+
+// tHIS IS BROKEN FIX IT
+//    $checkIfEmailExists = mysql_query("SELECT email from users WHERE email = '$email'");
+
+//    if(mysql_num_rows($checkIfEmailExists) > 0) {
+//        header('Location: /register.php?error=exists');
+//   }
+
+  $qString = ('UPDATE groups SET name = :name, description = :description, projectType = :type WHERE id = :groupId');
+  $stm = $db -> prepare($qString);
+
+  if ($stm -> execute( array(':name' => $groupName, ':description' => $description, ':type' => $type, ':groupId' => $groupId))) {
     if(addToGroup($userId, $db, getGroupId($groupName, $db), true)) {
       echo "<meta http-equiv='REFRESH' content='0;url=/list.php'>";
     } else {
@@ -55,6 +84,7 @@ function removeFromGroup($userId, $db, $group) {
 }
 
 function addToGroup($userId, $db, $group, $leader) {
+  // echo "adding to group $group user $userId";
   if ($group == 0) {
     echo "<meta http-equiv='REFRESH' content='0;url=createGroup.php'>";
     return 0;
