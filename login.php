@@ -1,24 +1,7 @@
 <?php
-//log out handler code
-if(isset($_GET['action']) && $_GET['action'] == "logout") {
-  if (session_status() === PHP_SESSION_NONE){session_start();}
-  unset($_SESSION['id']);
-}
+// Only render this page if it's included in index.php, not accessed by URL
+if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
 
-// user registration handler code
-if(isset($_GET['action']) && $_GET['action'] == "register") {
-  include('registerHandler.inc');
-}
-?>
-<!doctype html>
-<html lang="en">
-<head>
-  <!-- TEAMWORKER 1.0 -->
-  <meta charset="utf-8">
-  <title>TeamWorker</title>
-  <?php include "stylesheets.inc"; ?>
-  
-</head>
 <body>
   <main class="login">
     <header>

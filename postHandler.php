@@ -23,7 +23,7 @@ function getAllPosts($db) {
 // Takes the group's posts as an array ($groupPosts)
 // And the database ($db)
 function renderGroupPosts($groupPosts, $db) { 
-
+  echo '<div class="scrollContainer">';
   foreach ($groupPosts as $a) { ?>
     <div class="post">
       <h4><?php echo getUserName($a['userId'], $db); ?></h4>
@@ -34,7 +34,8 @@ function renderGroupPosts($groupPosts, $db) {
       } ?>
     </div>
 <?php 
-}}
+} echo '</div>';
+}
 
 // Creates a new post
 // $db is database, $group is the group to post in, $user is who made the post, $content is the content itself

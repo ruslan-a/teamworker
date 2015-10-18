@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.42)
 # Database: capstone
-# Generation Time: 2015-10-15 08:08:34 +0000
+# Generation Time: 2015-10-18 02:30:16 +0000
 # ************************************************************
 
 
@@ -29,28 +29,30 @@ CREATE TABLE `groups` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL DEFAULT '',
   `description` mediumtext,
+  `projectType` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 
-INSERT INTO `groups` (`id`, `name`, `description`)
+INSERT INTO `groups` (`id`, `name`, `description`, `projectType`)
 VALUES
-	(1,'test group',NULL),
-	(2,'cool dog group','we\'re cool'),
-	(6,'cool cat group','we super cool'),
-	(8,'cool bird group','we like them'),
-	(9,'asdfasdf','asdfasdf'),
-	(10,'cool man group','not really that cool'),
-	(12,'not cool group','at all'),
-	(13,'testy test test group','testt'),
-	(15,'sdfasdfasdfasdf','asdfasdfasdf'),
-	(17,'asdfasdgfsdfgsdfgsdfgxdf','dsfgsdfgsdf'),
-	(18,'New Test Group!','Cool group for cool peeps'),
-	(19,'new Group name','group description'),
-	(20,'Project Team 17','We\'re doing things');
+	(1,'test group','a test group yeah','Web Development'),
+	(2,'cool dog group','we\'re cool','Programming'),
+	(6,'cool cat group','we super cool','Business'),
+	(8,'cool bird group','we like them','Design'),
+	(9,'asdfasdf','asdfasdf','Web Development'),
+	(10,'cool man group','not really that cool','Programming'),
+	(12,'not cool group','at all','Business'),
+	(13,'testy test test group','testt','Design'),
+	(15,'sdfasdfasdfasdf','asdfasdfasdf','Web Development'),
+	(17,'asdfasdgfsdfgsdfgsdfgxdf','dsfgsdfgsdf','Programming'),
+	(18,'New Test Group!','Cool group for cool peeps','Business'),
+	(19,'new Group name','group description','Design'),
+	(20,'Project Team 17','We\'re doing things','Web Development'),
+	(21,'Sample Group Name!','Sample description text!','Programming');
 
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -67,20 +69,25 @@ CREATE TABLE `posts` (
   `userId` int(11) DEFAULT NULL,
   `content` longtext,
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `admin` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 
-INSERT INTO `posts` (`id`, `groupId`, `userId`, `content`, `timestamp`)
+INSERT INTO `posts` (`id`, `groupId`, `userId`, `content`, `timestamp`, `admin`)
 VALUES
-	(2,1,1,'hi this coding thing is kinda hard :/','2015-09-29 19:29:38'),
-	(3,1,42,'hello world this is me\n','2015-09-29 19:48:02'),
-	(4,12,1,'hello ass','2015-09-30 13:41:00'),
-	(8,12,1,'hi hi hi','2015-09-30 13:47:37'),
-	(9,12,1,'WOWie','2015-09-30 13:47:41'),
-	(10,0,57,'odufhasldjfasdf','2015-10-07 12:06:40');
+	(2,1,1,'hi this coding thing is kinda hard :/','2015-09-29 19:29:38',0),
+	(3,1,42,'hello world this is me\n','2015-09-29 19:48:02',0),
+	(8,12,1,'hi hi hi','2015-09-30 13:47:37',0),
+	(10,0,57,'odufhasldjfasdf','2015-10-07 12:06:40',0),
+	(11,21,1,'This is a new post!','2015-10-16 20:44:23',0),
+	(12,21,1,'another post hi','2015-10-18 11:33:47',0),
+	(13,21,1,'yet another pooost','2015-10-18 11:33:53',0),
+	(14,21,1,'testing this posts agains','2015-10-18 11:40:47',0),
+	(15,21,21,'hi there','2015-10-18 11:41:30',0),
+	(21,0,52,'hi','2015-10-18 11:53:13',1);
 
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -102,7 +109,7 @@ CREATE TABLE `users` (
   `password` char(64) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `mainArea` varchar(30) DEFAULT NULL,
-  `skills` varchar(30) DEFAULT NULL,
+  `skills` text,
   `gpa` double DEFAULT NULL,
   `goal` double DEFAULT NULL,
   `bio` varchar(300) DEFAULT NULL,
@@ -110,54 +117,54 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `studentID` (`studentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
 INSERT INTO `users` (`id`, `permissions`, `currentGroup`, `groupLeader`, `name`, `displayName`, `email`, `password`, `dob`, `mainArea`, `skills`, `gpa`, `goal`, `bio`, `studentID`)
 VALUES
-	(1,1,0,1,'Ruslan Abylkassov','ruslan','ruslan.abylkassov@student.qut.edu.au','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-12-05','Project Leadership',NULL,5,7,'Hi I\'m Ruslan im ok','8623881'),
-	(6,1,0,NULL,'Darius Franklin','test name','gravida@congue.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1989-04-26','Business',NULL,NULL,NULL,NULL,NULL),
-	(7,1,0,NULL,'Candice Foley','test name','non@pedeCum.org','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1986-10-06','Business',NULL,NULL,NULL,NULL,NULL),
-	(8,1,0,NULL,'Rae Vinson','test name','metus@nonenim.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1990-11-27','Web Development',NULL,NULL,NULL,NULL,NULL),
-	(9,1,12,NULL,'Mari Maddox','test name','Sed@ornareplacerat.edu','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1988-02-15','Project Leadership',NULL,NULL,NULL,NULL,NULL),
-	(10,1,0,NULL,'Beck Keller','test name','laoreet.posuere@elitCurabitursed.net','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1990-02-27','Business',NULL,NULL,NULL,NULL,NULL),
-	(11,1,0,NULL,'Gail Odom','test name','vulputate@facilisisnonbibendum.co.uk','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1988-07-17','Business',NULL,NULL,NULL,NULL,NULL),
-	(12,1,1,NULL,'Kaseem Davis','test name','a.arcu.Sed@augue.edu','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1987-02-05','Business',NULL,NULL,NULL,NULL,NULL),
-	(13,1,12,NULL,'Barclay Riley','test name','venenatis.vel@lectuspedeultrices.co.uk','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1992-03-30','Project Leadership',NULL,NULL,NULL,NULL,NULL),
-	(14,1,17,0,'Zorita Boyer','test name','et@eudui.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1988-11-08','Project Leadership',NULL,NULL,NULL,NULL,NULL),
-	(15,1,18,0,'Hayley West','test name','ultrices.posuere.cubilia@montesnascetur.','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1986-12-05','Web Development',NULL,NULL,NULL,NULL,NULL),
-	(16,1,1,NULL,'Declan Maldonado','test name','nunc.sit.amet@ametconsectetuer.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-08-02','Programming',NULL,NULL,NULL,NULL,NULL),
-	(17,1,12,NULL,'Echo Collier','test name','orci.consectetuer@sollicitudinorcisem.or','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-03-30','Project Leadership',NULL,NULL,NULL,NULL,NULL),
-	(18,1,18,0,'Warren Buchanan','test name','scelerisque.sed@convallisligula.org','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1993-10-28','Programming',NULL,NULL,NULL,NULL,NULL),
-	(19,1,1,NULL,'Phoebe Barton','test name','luctus.aliquet@orciUt.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1987-01-29','Programming',NULL,NULL,NULL,NULL,NULL),
-	(20,1,0,NULL,'Aline Owens','test name','sagittis.Nullam.vitae@libero.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1990-11-24','Business',NULL,NULL,NULL,NULL,NULL),
-	(21,1,0,NULL,'Carter Hawkins','test name','Quisque.ac.libero@Pellentesquehabitant.o','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-01-07','Programming',NULL,NULL,NULL,NULL,NULL),
-	(22,1,1,0,'Griffin Kirk','test name','aliquet.odio.Etiam@semperauctorMauris.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1993-11-17','Web Development',NULL,NULL,NULL,NULL,NULL),
-	(23,1,0,NULL,'Ryder Mathis','test name','enim@eleifendnecmalesuada.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-11-26','Business',NULL,NULL,NULL,NULL,NULL),
-	(24,1,1,NULL,'Rylee Carter','test name','nunc.id@egetdictum.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1991-12-19','Web Development',NULL,NULL,NULL,NULL,NULL),
-	(25,1,0,NULL,'Nasim Hoffman','test name','pellentesque@dolor.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-08-20','Web Development',NULL,NULL,NULL,NULL,NULL),
-	(26,1,0,NULL,'Hoyt Burton','test name','non.dapibus.rutrum@atpretium.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1993-08-22','Business',NULL,NULL,NULL,NULL,NULL),
-	(27,1,1,NULL,'Hannah Marks','test name','at.velit.Cras@orci.net','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1991-04-02','Business',NULL,NULL,NULL,NULL,NULL),
-	(28,1,20,0,'Keiko Rutledge','test name','Vestibulum@libero.co.uk','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-01-29','Project Leadership',NULL,NULL,NULL,NULL,NULL),
-	(29,1,0,NULL,'Colton Mosley','test name','Etiam.ligula@fermentumarcuVestibulum.edu','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1989-03-17','Business',NULL,NULL,NULL,NULL,NULL),
-	(30,1,0,NULL,'Gage Foster','test name','sapien.cursus@vulputateullamcorpermagna.','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1992-03-28','Business',NULL,NULL,NULL,NULL,NULL),
-	(31,1,1,NULL,'Bradley Scott','test name','Mauris@in.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-12-10','Programming',NULL,NULL,NULL,NULL,NULL),
-	(32,1,0,NULL,'Cedric Jenkins','test name','Vivamus@disparturientmontes.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1993-05-29','Business',NULL,NULL,NULL,NULL,NULL),
-	(33,1,20,0,'Keane Dawson','test name','libero.Donec.consectetuer@maurisidsapien','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1988-09-09','Web Development',NULL,NULL,NULL,NULL,NULL),
-	(34,1,0,NULL,'Kim Meyers','test name','sed.hendrerit@infaucibus.co.uk','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-09-13','Business',NULL,NULL,NULL,NULL,NULL),
-	(35,1,20,0,'Gregory Harrell','test name','enim.Etiam@liberoProin.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1987-05-18','Programming',NULL,NULL,NULL,NULL,NULL),
-	(42,1,0,NULL,'Testy Testman','test name','ruslan@test.test','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-12-13','Web Development','php,html,css',4.78,5,'im a test man',NULL),
-	(52,3,0,NULL,'Admin User','test name','admin@test.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1989-04-05','Web Development',NULL,0,0,'',NULL),
-	(53,1,0,NULL,'Sally Warble','test name','sal@test','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL),
+	(1,1,21,1,'Ruslan Abylkassov','ruslan','ruslan.abylkassov@student.qut.edu.au','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-12-05','Web Development','php, html, css, javascript, design',5,7,'Hi I\'m Ruslan','8623881'),
+	(6,1,0,NULL,'Darius Franklin',NULL,'gravida@congue.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1989-04-26','Business',NULL,NULL,NULL,NULL,NULL),
+	(7,1,6,0,'Candice Foley',NULL,'non@pedeCum.org','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1986-10-06','Business',NULL,NULL,NULL,NULL,NULL),
+	(8,1,0,NULL,'Rae Vinson',NULL,'metus@nonenim.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1990-11-27','Web Development',NULL,NULL,NULL,NULL,NULL),
+	(9,1,12,NULL,'Mari Maddox',NULL,'Sed@ornareplacerat.edu','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1988-02-15','Project Leadership',NULL,NULL,NULL,NULL,NULL),
+	(10,1,10,0,'Beck Keller',NULL,'laoreet.posuere@elitCurabitursed.net','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1990-02-27','Business',NULL,NULL,NULL,NULL,NULL),
+	(11,1,0,NULL,'Gail Odom',NULL,'vulputate@facilisisnonbibendum.co.uk','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1988-07-17','Business',NULL,NULL,NULL,NULL,NULL),
+	(12,1,1,NULL,'Kaseem Davis',NULL,'a.arcu.Sed@augue.edu','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1987-02-05','Business',NULL,NULL,NULL,NULL,NULL),
+	(13,1,12,NULL,'Barclay Riley',NULL,'venenatis.vel@lectuspedeultrices.co.uk','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1992-03-30','Project Leadership',NULL,NULL,NULL,NULL,NULL),
+	(14,1,17,0,'Zorita Boyer',NULL,'et@eudui.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1988-11-08','Project Leadership',NULL,NULL,NULL,NULL,NULL),
+	(15,1,18,0,'Hayley West',NULL,'ultrices.posuere.cubilia@montesnascetur.','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1986-12-05','Web Development',NULL,NULL,NULL,NULL,NULL),
+	(16,1,1,NULL,'Declan Maldonado',NULL,'nunc.sit.amet@ametconsectetuer.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-08-02','Programming',NULL,NULL,NULL,NULL,NULL),
+	(17,1,12,NULL,'Echo Collier',NULL,'orci.consectetuer@sollicitudinorcisem.or','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-03-30','Project Leadership',NULL,NULL,NULL,NULL,NULL),
+	(18,1,18,0,'Warren Buchanan',NULL,'scelerisque.sed@convallisligula.org','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1993-10-28','Programming',NULL,NULL,NULL,NULL,NULL),
+	(19,1,1,NULL,'Phoebe Barton',NULL,'luctus.aliquet@orciUt.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1987-01-29','Programming',NULL,NULL,NULL,NULL,NULL),
+	(20,1,0,NULL,'Aline Owens',NULL,'sagittis.Nullam.vitae@libero.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1990-11-24','Business',NULL,NULL,NULL,NULL,NULL),
+	(21,1,21,0,'Carter Hawkins',NULL,'Quisque.ac.libero@Pellentesquehabitant.o','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-01-07','Programming',NULL,NULL,NULL,NULL,'81935464'),
+	(22,1,1,0,'Griffin Kirk',NULL,'aliquet.odio.Etiam@semperauctorMauris.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1993-11-17','Web Development',NULL,NULL,NULL,NULL,NULL),
+	(23,1,0,NULL,'Ryder Mathis',NULL,'enim@eleifendnecmalesuada.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-11-26','Business',NULL,NULL,NULL,NULL,NULL),
+	(24,1,1,NULL,'Rylee Carter',NULL,'nunc.id@egetdictum.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1991-12-19','Web Development',NULL,NULL,NULL,NULL,NULL),
+	(25,1,10,0,'Nasim Hoffman',NULL,'pellentesque@dolor.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-08-20','Web Development',NULL,NULL,NULL,NULL,NULL),
+	(26,1,0,NULL,'Hoyt Burton',NULL,'non.dapibus.rutrum@atpretium.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1993-08-22','Business',NULL,NULL,NULL,NULL,NULL),
+	(27,1,1,NULL,'Hannah Marks',NULL,'at.velit.Cras@orci.net','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1991-04-02','Business',NULL,NULL,NULL,NULL,NULL),
+	(28,1,20,0,'Keiko Rutledge',NULL,'Vestibulum@libero.co.uk','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-01-29','Project Leadership',NULL,NULL,NULL,NULL,NULL),
+	(29,1,0,NULL,'Colton Mosley',NULL,'Etiam.ligula@fermentumarcuVestibulum.edu','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1989-03-17','Business',NULL,NULL,NULL,NULL,NULL),
+	(30,1,0,0,'Gage Foster',NULL,'sapien.cursus@vulputateullamcorpermagna.','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1992-03-28','Business',NULL,NULL,NULL,NULL,NULL),
+	(31,1,1,NULL,'Bradley Scott',NULL,'Mauris@in.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-12-10','Programming',NULL,NULL,NULL,NULL,NULL),
+	(32,1,0,NULL,'Cedric Jenkins',NULL,'Vivamus@disparturientmontes.ca','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1993-05-29','Business',NULL,NULL,NULL,NULL,NULL),
+	(33,1,20,0,'Keane Dawson',NULL,'libero.Donec.consectetuer@maurisidsapien','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1988-09-09','Web Development',NULL,NULL,NULL,NULL,NULL),
+	(34,1,0,NULL,'Kim Meyers',NULL,'sed.hendrerit@infaucibus.co.uk','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1995-09-13','Business',NULL,NULL,NULL,NULL,NULL),
+	(35,1,20,0,'Gregory Harrell',NULL,'enim.Etiam@liberoProin.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1987-05-18','Programming',NULL,NULL,NULL,NULL,NULL),
+	(42,1,6,0,'Testy Testman',NULL,'ruslan@test.test','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-12-13','Web Development','php,html,css',4.78,5,'im a test man',NULL),
+	(52,3,0,NULL,'Admin User',NULL,'admin@test.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1989-04-05','Web Development',NULL,0,0,'','000'),
+	(53,1,0,NULL,'Sally Warble',NULL,'sal@test','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL),
 	(54,1,0,NULL,'Jon Snow',NULL,'jon@test.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-07-14',NULL,NULL,NULL,NULL,NULL,NULL),
 	(55,1,0,NULL,'asdfa sadf','jerk','jerk@test','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1994-03-15',NULL,NULL,NULL,NULL,NULL,NULL),
-	(56,1,0,NULL,'asdfasdf','asd','','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL),
+	(56,1,6,0,'asdfasdf','asd','','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL),
 	(57,1,0,NULL,'new name','display name','newemail@email.com','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','1997-03-11','Web Development',NULL,4,5,'sdfasdfasdf',NULL),
 	(58,1,0,NULL,'Metthew Nuhn',NULL,NULL,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',NULL,NULL,NULL,NULL,NULL,NULL,'24332880'),
 	(59,1,0,NULL,'Nick Sherme',NULL,NULL,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',NULL,NULL,NULL,NULL,NULL,NULL,'25902940'),
-	(60,1,0,NULL,'Jecob Grey',NULL,NULL,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',NULL,NULL,NULL,NULL,NULL,NULL,'22134460'),
+	(60,1,21,0,'Jecob Grey',NULL,NULL,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',NULL,NULL,NULL,NULL,NULL,NULL,'22134460'),
 	(61,1,0,NULL,'Metthew Wilmen',NULL,NULL,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',NULL,NULL,NULL,NULL,NULL,NULL,'50420938'),
 	(62,1,0,NULL,'Victor Alverez',NULL,NULL,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',NULL,NULL,NULL,NULL,NULL,NULL,'50687977'),
 	(63,1,0,NULL,'Tom Gee Kee',NULL,NULL,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',NULL,NULL,NULL,NULL,NULL,NULL,'50958474'),

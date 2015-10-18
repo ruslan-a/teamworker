@@ -461,6 +461,11 @@ form.mini input[type="submit"]{
     padding:0 5px;
 }
 
+.scrollContainer {
+    max-height: 500px;
+    overflow: scroll;
+}
+
 .post {
     border: solid 1px #ccc;
     margin: 15px 0;

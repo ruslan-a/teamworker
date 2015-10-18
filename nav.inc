@@ -1,6 +1,6 @@
 <nav>
   <div class="topNavProfile">
-    <a href='profile.php'><?=$userName?></a>
+    <a href='/?page=profile'><?=$userName?></a>
   </div>
   <ul>
     <!-- change nav whether theyre in a group or not -->

@@ -1,18 +1,8 @@
+<?php
+// Only render this page if it's included in index.php, not accessed by URL
+if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
 
-<!DOCTYPE HTML>
-<html>
-<head>
-
-  <!-- TEAMWORKER 1.0 -->
-
-  <!-- TODO: meta -->
-  <title>TeamWorker</title>
-
-  <?php include "stylesheets.inc"; ?>
-
-</head>
 <body>
-
   <main>
     <?php include "header.inc"; ?>
     <div class="glance">
