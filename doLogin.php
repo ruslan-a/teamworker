@@ -19,11 +19,11 @@
     if($dbPass == $password && $password != null) {
     	if (session_status() === PHP_SESSION_NONE){session_start();}
     	$_SESSION['id'] = $result['id'];
-    	echo "<meta http-equiv='REFRESH' content='0;url=index.php?loggedin=true'>";
+    	echo "<meta http-equiv='REFRESH' content='0;url=/'>";
     } else {
-    	echo "<meta http-equiv='REFRESH' content='0;url=login.php?error=true'>";
+    	echo "<meta http-equiv='REFRESH' content='0;url=/?page=login&error=true'>";
     }
   } else {
-    echo "<meta http-equiv='REFRESH' content='0;url=login.php?error=true&type=empty'>";
+    echo "<meta http-equiv='REFRESH' content='0;url=/?page=login&error=true&type=empty'>";
   }
 ?>

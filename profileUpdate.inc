@@ -1,12 +1,5 @@
 <?php 
 if (isset($_GET['action']) && $_GET['action'] == 'edit') {
-  echo "edidint ur ";
-  echo $_SESSION['id'];
-
-  include_once 'pdo.inc';
-  
-  error_reporting(E_ALL);
-  ini_set('display_errors', 1);
 
   $newName = strip_tags($_POST['username']);
   $newDisplayName = strip_tags($_POST['displayname']);
@@ -29,11 +22,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
       ':gpa' => $newGpa,
       ':goal' => $newGoal,
       ':bio' => $newBio,
-      ':id' => $_SESSION['id'] ))) 
+      ':id' => $_SESSION['id']))) 
   {
     print_r($stm->errorInfo());
   } else {
-    echo "<meta http-equiv='REFRESH' content='0;url=profile.php?updated=true'>";
+    echo "<meta http-equiv='REFRESH' content='0;url=?page=profile&amp;updated=true'>";
   }
 }
 ?>

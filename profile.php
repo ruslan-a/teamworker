@@ -1,19 +1,3 @@
-<?php include_once 'userHandler.php' ?>
-<?php include 'profileUpdate.inc' ?>
-<?php if (!isset($_SESSION['id'])) { //login check
-  echo "<meta http-equiv='REFRESH' content='0;url=login.php'>";
-}?>
-
-<!DOCTYPE HTML>
-<html>
-<head>
-  <!-- TEAMWORKER 1.0 -->
-  <meta charset="utf-8">
-  <title>Profile - TeamWorker</title>
-  <?php include "stylesheets.inc"; ?>
-  <script src='jquery.js' type='text/javascript'></script>
-</head>
-
 <body>
   <main>
     <?php include "header.inc"; ?>
@@ -41,7 +25,7 @@
       <h1><?=$userName?></h1>
       <h2><?=$userEmail?></h2>
       <input type="submit" form="profile" class="button" value="save">
-      <form id="profile" name="profile" action="profile.php?action=edit" method="post">
+      <form id="profile" name="profile" action="/?page=profile&amp;action=edit" method="post">
         <table>
           <tr><td>Real Name</td> <td><input type="text" name="username" value="<?=$realName?>"></td></tr>
           <tr><td>Display Name</td> <td><input type="text" name="displayname" value="<?=$userName?>"></td></tr>

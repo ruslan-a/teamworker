@@ -26,8 +26,8 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
       $result = $statement -> fetchAll(PDO::FETCH_ASSOC);
     }
   ?> 
-
-    <h2>Groups</h2>
+  <h2>Groups</h2>
+  <div class="scrollContainer">
     <table>
       <tr>
           <th>Name</th>
@@ -42,6 +42,7 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
       </tr>
       <?php } ?>
     </table>
+  </div>
 
   <?php   
     $query = ('SELECT * FROM users');  
@@ -55,6 +56,7 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
   ?> 
 
     <h2>Students</h2>
+    <div class="scrollContainer">
     <table>
         <tr>    <th>Name</th>   <th>Area of Expertise</th>  <th>Actions</th>    </tr>
         <?php // start looping through group members
@@ -77,6 +79,7 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
             <?php } }// end check for self, leader ?></td>
           </tr>
     </table>
+  </div>
   </div>
 <?php include 'footer.php' ?>
 </main>
