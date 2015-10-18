@@ -9,7 +9,7 @@ include_once 'postHandler.php';
 
 // action handlers
 if(isset($_GET['action']) && $_GET['action'] == 'newPost') {
-  createNewPost($db, $group, $userId, $_POST['content']);
+  createNewPost($db, $group, $userId, $_POST['content'], canAnnounce($role));
 }
 
 // login/permissions check

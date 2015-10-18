@@ -8,7 +8,7 @@
       <li><a href="list.php">my group</a></li>
       <li><a href="filters.php">find members</a></li>
     <?php } ?>
-    <?php if($group == 0) { ?>
+    <?php if($group == 0 AND $role == 1) { ?>
       <li><a href="searchGroup.php">find group</a></li>
       <li><a href="createGroup.php">create group</a></li>
     <?php } ?>

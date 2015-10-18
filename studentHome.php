@@ -15,11 +15,8 @@
 
   <main>
     <?php include "header.inc"; ?>
-    <div class="content">
-      <h1><?php echo getGroupName($group, $db); ?></h1>
-    </div>
     <div class="glance">
-
+      <h1><?php echo getGroupName($group, $db); ?></h1>
     </div>
     <div class="content">
 
@@ -30,16 +27,7 @@
         <textarea name="content" placeholder="What's on your mind?" minlength="2" required></textarea>
         <input type="submit" value="Post">
       </form>
-      <?php
-        $groupPosts = getGroupPosts($db, $group);
-
-        foreach ($groupPosts as $a) { ?>
-          <div class="post">
-            <h4><?php echo getUserName($a['userId'], $db); ?></h4>
-            <p><?=$a['content'];?></p>
-            <a class="timestamp"><?=$a['timestamp'];?></a>
-          </div>
-        <?php } ?>
+      <?php renderGroupPosts(getGroupPosts($db, $group), $db);  ?>
       </div>
     </div>
     <?php include('footer.php'); ?>

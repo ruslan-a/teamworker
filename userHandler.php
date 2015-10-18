@@ -61,4 +61,13 @@ function getUserId($userName, $db) {
    return $result['id']; 
   }
 }
+
+// check if the role code is capable of posting announcements or not
+function canAnnounce($role) {
+  if ($role == 2 OR $role == 3) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
 ?>
