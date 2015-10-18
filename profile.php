@@ -1,3 +1,7 @@
+<?php
+// Only render this page if it's included in index.php, not accessed by URL
+if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
+
 <body>
   <main>
     <?php include "header.inc"; ?>
@@ -15,7 +19,6 @@
         <tr><td>Area of Expertise</td>  <td><?=$areaExpertise?></td></tr>
         <tr><td>Preferred Grade</td>  <td><?=$goal?></td></tr>
         <tr><td>Current GPA</td>  <td><?=$gpa?></td></tr>
-        <tr><td>Registered Tutorial</td>  <td></td></tr>
         <tr><td>Skills</td>  <td><?=$skills?></td></tr>
         <tr><td>About Me</td> <td><?=$bio?></td></tr>
       </table>

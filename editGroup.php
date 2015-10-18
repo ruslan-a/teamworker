@@ -1,15 +1,6 @@
-<?php include('userHandler.php') ?>
-<?php include('groupHandler.php') ?>
 <?php
-  //action handler
-?>
-<!DOCTYPE HTML>
-<html>
-<head>
-  <title>TeamWorker</title>
-  <?php include "stylesheets.inc"; ?>
-</head>
-
+// Only render this page if it's included in index.php, not accessed by URL
+if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
 
 <body>
   <main>
@@ -22,15 +13,18 @@
         } else {
           $myGroup = getGroup($db, $group);
       ?>
-      <form name="updateGroup" action="list.php?action=editGroup" method="POST">
-        <input type="text" name="name" value="<?php echo getGroupName($group, $db);?>">
-        <input type="text" name="description" value="<?php echo getGroupDescription($group, $db) ?>">
-        <select name="type" id="type">
-          <option value="Web Development" <?php if(getGroupType($group, $db) == 'Web Development'){echo("selected");}?> >Web Development</option>
-          <option value="Programming" <?php if(getGroupType($group, $db) == 'Programming'){echo("selected");}?> >Programming</option>
-          <option value="Business" <?php if(getGroupType($group, $db) == 'Business'){echo("selected");}?> >Business</option>
-          <option value="Design" <?php if(getGroupType($group, $db) == 'Design'){echo("selected");}?> >Design</option>
-        </select></td>
+      <form name="updateGroup" action="?page=group&amp;action=editGroup" method="POST">
+        <label for="name">Group Name</label>
+          <input type="text" name="name" value="<?php echo getGroupName($group, $db);?>">
+        <label for="description">Description</label>
+          <input type="text" name="description" value="<?php echo getGroupDescription($group, $db) ?>">
+        <label for="type">Preferred Project Type</label>
+          <select name="type" id="type">
+            <option value="Web Development" <?php if(getGroupType($group, $db) == 'Web Development'){echo("selected");}?> >Web Development</option>
+            <option value="Programming" <?php if(getGroupType($group, $db) == 'Programming'){echo("selected");}?> >Programming</option>
+            <option value="Business" <?php if(getGroupType($group, $db) == 'Business'){echo("selected");}?> >Business</option>
+            <option value="Design" <?php if(getGroupType($group, $db) == 'Design'){echo("selected");}?> >Design</option>
+          </select></td>
         <input type="submit" class="button" value="Save Edits">
       </form>
       <?php } ?>

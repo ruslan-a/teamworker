@@ -4,15 +4,13 @@
 * I'd like to move all pages into here eventually to turn it into a single-page app but *shrugs* 
 */
 
+define('includeConst', TRUE); // Allows this page to be accessed directly, not included in another page
+
 include_once 'pdo.inc';
 include_once 'userHandler.php';
 include_once 'groupHandler.php';
 include_once 'postHandler.php';
-
-
 include_once 'head.inc';
-
-define('includeConst', TRUE);
 
 // Action handlers
 if(isset($_GET['action'])) {
@@ -30,21 +28,39 @@ if(isset($_GET['action'])) {
   }
 } 
 
-// login/permissions check
-//  1: student
-//  2: course coordinator
-//  3: site admin
-// if they're not logged in, redirect to the login page
+/* login/permissions check
+ Role numbers:
+ 1: student
+ 2: course coordinator
+ 3: site admin
+ if they're not logged in, only render the login page */
 if(!isset($_SESSION['id'])) {    
   include 'login.php';
 } else {
   // Page loaders
-  if(!isset($_GET['page'])) {  // if no page set then show index
+  if(!isset($_GET['page'])) {  // if no page set then show student/admin home page
     if($role == 1) { include 'studentHome.php'; } else 
     if ($role == 3) { include 'adminHome.php'; }
-  } else if ($_GET['page'] == 'profile') {
-    include 'profile.php';
-    include 'profileUpdate.inc';
+  } else  {
+    switch ($_GET['page']) { 
+      case 'profile':
+        include 'profile.php';
+        include 'profileUpdate.inc';
+        break;
+      case 'group':
+        include 'list.php';
+        break;
+      case 'editGroup':
+        include 'editGroup.php';
+        break;
+      case 'userSearch':
+        include 'filters.php';
+        break;
+      case 'searchResults':
+        include 'searchHandler.php';
+        include 'searchResults.php';
+        break;
+    }
   }
 } 
 ?>

@@ -1,8 +1,5 @@
 <?php
 // Contains all the data and functions for the currently logged in user
-include_once('pdo.inc');
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
 if(isset($_SESSION['id'])) {
   $sessionId = $_SESSION['id'];

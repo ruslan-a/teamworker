@@ -31,7 +31,7 @@ main{
 }
 
 /*TEXT STYLES*/
-h1{
+h1 {
     font-weight:300;
     font-size:1.7em;
     text-transform:uppercase;
@@ -40,11 +40,21 @@ h1{
 .content h1:first-child{
     margin-top:0;
 }
-h2{
+h2 {
     font-weight:300;
     font-size:1.3em;
     text-transform:uppercase;
     margin:15px 0;
+}
+
+.bigError {
+    text-align: center;
+    text-transform: none;
+    margin: 100px 0 100px 0;
+}
+
+.bigError a {
+    color: #2785c7;
 }
 
 .subtitle {

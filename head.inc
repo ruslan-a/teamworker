@@ -1,3 +1,7 @@
+<?php
+// Only render this page if it's included in index.php, not accessed by URL
+if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
+
 <!doctype html>
 <html lang="en">
 <head>

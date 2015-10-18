@@ -1,6 +1,7 @@
 <?php
 
 // Returns the group's posts as an array
+// $group is the group whose posts to return
 function getGroupPosts($db, $group) {
   $query = ('SELECT * FROM posts WHERE groupId = :groupId OR admin = 1 ORDER BY timestamp DESC');
   $statement = $db -> prepare($query);
@@ -10,6 +11,7 @@ function getGroupPosts($db, $group) {
   return $result;
 }
 
+// Returns all posts as an array
 function getAllPosts($db) {
   $query = ('SELECT * FROM posts ORDER BY timestamp DESC');
   $statement = $db -> prepare($query);
@@ -18,23 +20,21 @@ function getAllPosts($db) {
   return $result;
 }
 
-
 // Outputs posts to HTML
 // Takes the group's posts as an array ($groupPosts)
 // And the database ($db)
 function renderGroupPosts($groupPosts, $db) { 
   echo '<div class="scrollContainer">';
-  foreach ($groupPosts as $a) { ?>
-    <div class="post">
+  foreach ($groupPosts as $a) { 
+    ?> <div class="post">
       <h4><?php echo getUserName($a['userId'], $db); ?></h4>
       <p><?=$a['content'];?></p>
       <a class="timestamp"><?=$a['timestamp'];?></a>
       <?php if($a['admin'] == 1) {
         echo "<span class='postTag'>Announcement<span>";
       } ?>
-    </div>
-<?php 
-} echo '</div>';
+    </div> <?php 
+  } echo '</div>';
 }
 
 // Creates a new post
@@ -51,7 +51,7 @@ function createNewPost($db, $group, $user, $content, $admin) {
       ':admin' => $admin))) {
     return true;
   } else {
-  print_r($stm->errorInfo());
+    print_r($stm->errorInfo());
     return false;
   }
 }

@@ -1,7 +1,6 @@
 <?php
-include_once('pdo.inc');
-error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 //returns currently logged in user's group members
 //needs DB reference and user's $group
 function getGroup($db, $group) {
@@ -33,7 +32,7 @@ function createGroup($groupName, $description, $type, $userId, $db) {
 
   if ($stm -> execute( array(':name' => $groupName, ':description' => $description, ':type' => $type))) {
     if(addToGroup($userId, $db, getGroupId($groupName, $db), true)) {
-      echo "<meta http-equiv='REFRESH' content='0;url=/list.php'>";
+      echo "<meta http-equiv='REFRESH' content='0;url=/?page=group'>";
     } else {
       echo 'couldnt add to group!';
     }
@@ -61,7 +60,7 @@ function updateGroup($groupId, $groupName, $description, $type, $db) {
 
   if ($stm -> execute( array(':name' => $groupName, ':description' => $description, ':type' => $type, ':groupId' => $groupId))) {
     if(addToGroup($userId, $db, getGroupId($groupName, $db), true)) {
-      echo "<meta http-equiv='REFRESH' content='0;url=/list.php'>";
+      echo "<meta http-equiv='REFRESH' content='0;url=/?page=group'>";
     } else {
       echo 'couldnt add to group!';
     }
@@ -167,7 +166,7 @@ function renderGroupList($db, $group, $groupLeader) { ?>
             <td><?=$a['mainArea']?></td>
             <td>
             <?php if($a['id'] != $_SESSION['id'] && $groupLeader == true) { // check if person is self or leader dont display remove button ?>
-            <a class="button" href="?action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a>
+            <a class="button" href="/?page=group&amp;action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a>
             <?php } // end check for self, leader ?></td>
           </tr>
         <?php  } // end looping through group members ?>
@@ -179,8 +178,8 @@ function renderGroupList($db, $group, $groupLeader) { ?>
 <?php 
 // List of group members showing only their names
 // Currently used on the student home page
-function renderSmallGroupList($db, $group, $groupLeader) { ?>
-    <div class="content">
+function renderSmallGroupList($db, $group, $groupLeader) { 
+  ?><div class="content">
       <!-- make sure theyre in a group -->
       <?php if ($group == 0) {
         echo "<h2>You're not in a group yet!</h2>";
@@ -205,7 +204,7 @@ function renderSmallGroupList($db, $group, $groupLeader) { ?>
           </tr>
         <?php  } // end looping through group members ?>
       </table>
-      <a class="button left" href="/list.php">Manage Group</a>
+      <a class="button left" href="/?page=group">Manage Group</a>
       <?php } // end if?>
-    </div>
-<?php } ?>
+    </div><?php 
+} ?>

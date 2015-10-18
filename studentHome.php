@@ -4,7 +4,12 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
 
 <body>
   <main>
-    <?php include "header.inc"; ?>
+    <?php include "header.inc"; 
+
+
+     if ($group == 0) {
+        echo "<h2 class='bigError'>You're not in a group yet! <a href=searchGroup.php'>Find</a> or <a href='createGroup.php'>create</a> one.</h2>";
+        } else { ?>
     <div class="glance">
       <h1><?php echo getGroupName($group, $db); ?></h1>
     </div>
@@ -20,6 +25,7 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
       <?php renderGroupPosts(getGroupPosts($db, $group), $db);  ?>
       </div>
     </div>
+    <?php } ?>
     <?php include('footer.php'); ?>
   </main>
   <script src="jquery.js"></script>

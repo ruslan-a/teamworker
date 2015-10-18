@@ -1,13 +1,15 @@
-<?php include 'userHandler.php';
+<?php 
+  include 'pdo.inc';
+  include 'userHandler.php';
   include 'groupHandler.php';
 
 if (isset($_GET['a']) && $_GET['a'] == "search") {
-    showSearchResults($db, $userName, $group);
+    showSearchResults($db, $userName, $group, $role);
 } else {
-    showSearchForm($userName, $group);
+    showSearchForm($userName, $group, $role);
 }
 
-function showSearchForm($userName, $group) {
+function showSearchForm($userName, $group, $role) {
   ?>
   <!DOCTYPE HTML>
   <html>
@@ -51,7 +53,7 @@ function showSearchForm($userName, $group) {
   <?php 
 } //end ShowSearchForm
 
-function showSearchResults($db, $userName, $group) { ?>
+function showSearchResults($db, $userName, $group, $role) { ?>
 <?php
 $searchTerm = $_POST['searchTerm']; 
 
@@ -102,7 +104,7 @@ if (!$statement -> execute()) {
                     <tr>
                         <td><?=$row['name']?></td>
                         <td><?=$row['projectType']?></td>
-                        <td><a class="button" href="list.php?action=addMeToExisting&amp;group=<?=$row['id']?>">Join Group</a></td>
+                        <td><a class="button" href="/?page=group&amp;action=addMeToExisting&amp;group=<?=$row['id']?>">Join Group</a></td>
                     </tr>
                     <?php } ?>
 
