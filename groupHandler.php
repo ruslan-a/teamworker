@@ -144,7 +144,21 @@ function getGroupType($groupId, $db) {
   return $result['projectType'];
 }
 
+function setLeader($group, $newLeader, $userId, $db) {
+  $query = ('UPDATE users SET groupLeader = 1 WHERE id = :userId');
+  $statement = $db -> prepare($query);
+  $statement -> bindValue(':userId', $newLeader);
 
+  // execute query and print error message if not
+  if (!$statement -> execute()) { return print_r($stm->errorInfo(), true);} else {
+    $query = ('UPDATE users SET groupLeader = 0 WHERE id = :userId');
+    $statement = $db -> prepare($query);
+    $statement -> bindValue(':userId', $userId);
+    if (!$statement -> execute()) { return print_r($stm->errorInfo(), true);} else {
+      return true;
+    }
+  }
+}
 
 // List of group members + details and options
 function renderGroupList($db, $group, $groupLeader) { ?>
@@ -166,7 +180,8 @@ function renderGroupList($db, $group, $groupLeader) { ?>
             <td><?=$a['mainArea']?></td>
             <td>
             <?php if($a['id'] != $_SESSION['id'] && $groupLeader == true) { // check if person is self or leader dont display remove button ?>
-            <a class="button" href="/?page=group&amp;action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a>
+              <a class="button" href="/?page=group&amp;action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a>
+              <a class="button" href="/?page=group&amp;action=setLeader&amp;user=<?=$a['id']?>" onclick="return confirm('Set <?=$a['name']?> as leader? This will remove you as leader.')")>Set as leader</a>
             <?php } // end check for self, leader ?></td>
           </tr>
         <?php  } // end looping through group members ?>
