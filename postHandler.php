@@ -41,38 +41,31 @@ function renderGroupPosts($groupPosts, $db) {
 // $db is database, $group is the group to post in, $user is who made the post, $content is the content itself
 function createNewPost($db, $group, $user, $content, $admin) {
 
-  if (isset($_FILES['attachment'])) {
-    $target_path = "uploads/";
+  if (count($_FILES) > 0) {
+    if ($_FILES['attachment']['name'] != "") { 
+      $target_path = "uploads/";
+      $target_path = $target_path . basename( $_FILES['attachment']['name']); 
 
-    /* Add the original filename to our target path.  
-    Result is "uploads/filename.extension" */
-    $target_path = $target_path . basename( $_FILES['attachment']['name']); 
+      $additional = '1';
 
-    $additional = '1';
+      while (file_exists($target_path)) {
+        $info = pathinfo($target_path);
+        $target_path = $info['dirname'] . '/'
+                  . $info['filename'] . $additional
+                  . '.' . $info['extension'];
+      }
 
-    while (file_exists($target_path)) {
-      $info = pathinfo($target_path);
-      $target_path = $info['dirname'] . '/'
-                . $info['filename'] . $additional
-                . '.' . $info['extension'];
+      if(!move_uploaded_file($_FILES['attachment']['tmp_name'], $target_path)) {
+          echo "There was an error uploading the file, please try again!";
+          die;
+      }
+
+      $fullURI = $_SERVER['HTTP_HOST']."/".$target_path;
+
+      $fullURI =  htmlspecialchars($fullURI);
+
+      $content = $content." <a href='http://$fullURI' download>[download attachment]</a>";
     }
-
-    if(!move_uploaded_file($_FILES['attachment']['tmp_name'], $target_path)) {
-        echo "There was an error uploading the file, please try again!";
-        die;
-    }
-
-
-
-    $fullURI = $_SERVER['HTTP_HOST']."/".$target_path;
-
-
-
-
-
-    $fullURI =  htmlspecialchars($fullURI);
-
-    $content = $content." <a href='http://$fullURI' download>[download attachment]</a>";
   } else {
     echo "no file to upload";
   }

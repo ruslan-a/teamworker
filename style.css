@@ -204,6 +204,11 @@ input[type="checkbox"] + label{
 input[type="checkbox"]:checked + label{
     background:url(_resources/checkbox.png) -20px top no-repeat;
 }
+input[type="file"] {
+    border: none;
+    padding: none;
+    margin-bottom: -15px;
+}
 .half-dropdown, .half-input{
     display:inline-block;
     margin-right:3px;

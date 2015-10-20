@@ -19,7 +19,7 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
     ?>
     <form id="login" name="myForm" action="doLogin.php" method="post">
       <label for="email">QUT ID</label>
-      <input type="number" name="email" placeholder="8623881" id="email" required>
+      <input type="number" name="email" placeholder="08623881" id="email" required>
       <br><br>
       <label for="password">Password</label>
       <input type="password" name="password" placeholder="********" id="password" required>
