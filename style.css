@@ -483,6 +483,11 @@ form.mini input[type="submit"]{
     box-sizing: border-box;
 }
 
+.post a {
+    color: #14A7FF;
+    /*float: right;*/
+}
+
 .post h4 {
     margin: 0;
 }

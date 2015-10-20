@@ -18,8 +18,10 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
       <div class="half"><?php renderSmallGroupList($db, $group, $groupLeader); ?></div>
       <div class="half">
       <h2>Posts</h2>
-      <form action="?action=newPost" method="post">
+      <form enctype="multipart/form-data" action="?action=newPost" method="post">
+        <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
         <textarea name="content" placeholder="What's on your mind?" minlength="2" required></textarea>
+        <input type="file" name="attachment"></input>
         <input type="submit" value="Post">
       </form>
       <?php renderGroupPosts(getGroupPosts($db, $group), $db);  ?>
