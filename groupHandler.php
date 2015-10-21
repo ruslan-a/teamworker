@@ -169,6 +169,7 @@ function renderGroupList($db, $group, $groupLeader) { ?>
         ?>
           <tr>
             <td>
+              <a href="/?page=viewProfile&amp;id=<?=$a['id']?>">
               <?php   
                 if($a['displayName'] == "") {
                     echo $a['name'];
@@ -176,6 +177,7 @@ function renderGroupList($db, $group, $groupLeader) { ?>
                     echo $a['displayName'];
                   } 
               ?>
+              </a>
             </td>
             <td><?=$a['mainArea']?></td>
             <td>
@@ -208,6 +210,7 @@ function renderSmallGroupList($db, $group, $groupLeader) {
         ?>
           <tr>
             <td>
+              <a href="/?page=viewProfile&amp;id=<?=$a['id']?>">
               <?php   
                 if($a['displayName'] == "") {
                     echo $a['name'];
@@ -215,6 +218,7 @@ function renderSmallGroupList($db, $group, $groupLeader) {
                     echo $a['displayName'];
                   } 
               ?>
+              </a>
             </td>
           </tr>
         <?php  } // end looping through group members ?>

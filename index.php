@@ -66,6 +66,9 @@ if(!isset($_SESSION['id'])) {
       case 'createGroup':
         include 'createGroup.php';
         break;
+      case 'viewProfile':
+        include 'viewProfile.php';
+        break;
     }
   }
 } 

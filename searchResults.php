@@ -13,7 +13,9 @@
         </tr>
         <?php foreach ($result as $a) { ?>
         <tr>
-          <td><?=$a['name']?></td>
+          <td><a href="/?page=viewProfile&amp;id=<?=$a['id']?>">
+          <?=$a['name']?>
+          </a></td>
           <td><?=$a['mainArea']?></td>
           <td><?=$a['skills']?></td>
           <td><a class="button" href="?page=group&amp;action=add&amp;user=<?=$a['id']?>">Add to group</a></td>
