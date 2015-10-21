@@ -37,7 +37,6 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
       } ?>
       <h1><?=$userName?></h1>
       <h2><?=$userEmail?></h2>
-      <a class="button" onclick="showEditor()">Edit</a>
       <table>
         <tr><td>Real Name</td> <td><?=$realName?></td></tr>
         <tr><td>Display Name</td> <td><?=$userName?></td></tr>

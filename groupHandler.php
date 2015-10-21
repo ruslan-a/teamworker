@@ -175,7 +175,10 @@ function renderGroupList($db, $group, $groupLeader) { ?>
                     echo $a['name'];
                   } else {
                     echo $a['displayName'];
-                  } 
+                  }
+                  if($a['groupLeader'] == 1) {
+                    echo ' <span class="subtitle">[group leader]</span>';
+                  }
               ?>
               </a>
             </td>
