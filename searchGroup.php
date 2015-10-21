@@ -1,7 +1,6 @@
 <?php 
-  include 'pdo.inc';
-  include 'userHandler.php';
-  include 'groupHandler.php';
+if(!defined('includeConst')) { die('Direct access not permitted'); } 
+
 
 if (isset($_GET['a']) && $_GET['a'] == "search") {
     showSearchResults($db, $userName, $group, $role);
@@ -10,29 +9,15 @@ if (isset($_GET['a']) && $_GET['a'] == "search") {
 }
 
 function showSearchForm($userName, $group, $role) {
-  ?>
-  <!DOCTYPE HTML>
-  <html>
-  <head>
-
-      <!-- TEAMWORKER 1.0 -->
-
-      <!-- TODO: meta -->
-      <title>TeamWorker</title>
-
-      <?php include "stylesheets.inc"; ?>
-
-  </head>
+ 
+   ?>
   <body>
 
       <main class="filters">
           <?php include "header.inc"; ?>
           <div class="two">
               <h1>Find A Group</h1>
-              <form id="searchForm" action="?a=search" method="POST">
-                  <label for="skillField">Keywords</label><br>
-                  <input type="text" id="skillField" name="searchTerm" placeholder="php, css, web, android" />
-                  <br><br>
+              <form id="searchForm" action="?page=groupSearch&amp;a=search" method="POST">
                   <label for="fieldSelect">Preferred Project Type</label><br>
                   <select name="field" id="fieldSelect">
                     <option value="">Any</option>
@@ -42,7 +27,7 @@ function showSearchForm($userName, $group, $role) {
                     <option value="Business">Business</option>
                   </select>
                   <br><br>
-                  <input type="submit" />
+                  <input type="submit" value="search"/>
                 </form>
           </div>
       <?php include 'footer.php' ?>
@@ -55,7 +40,6 @@ function showSearchForm($userName, $group, $role) {
 
 function showSearchResults($db, $userName, $group, $role) { ?>
 <?php
-$searchTerm = $_POST['searchTerm']; 
 
 $mainArea = $_POST['field'];
 
@@ -75,19 +59,6 @@ if (!$statement -> execute()) {
     return false;
 } else { 
   $result = $statement -> fetchAll(PDO::FETCH_ASSOC);?>
-
-    <!DOCTYPE HTML>
-    <html>
-    <head>
-
-        <!-- TEAMWORKER 1.0 -->
-
-        <!-- TODO: meta -->
-        <title>Search Results - TeamWorker</title>
-
-        <?php include "stylesheets.inc"; ?>
-
-    </head>
     <body>
         <main>
             <?php include "header.inc"; ?>

@@ -60,6 +60,12 @@ if(!isset($_SESSION['id'])) {
         include 'searchHandler.php';
         include 'searchResults.php';
         break;
+      case 'groupSearch':
+        include 'searchGroup.php';
+        break;
+      case 'createGroup':
+        include 'createGroup.php';
+        break;
     }
   }
 } 

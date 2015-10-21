@@ -8,7 +8,7 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
 
 
      if ($group == 0) {
-        echo "<h2 class='bigError'>You're not in a group yet! <a href=searchGroup.php'>Find</a> or <a href='createGroup.php'>create</a> one.</h2>";
+        echo "<h2 class='bigError'>You're not in a group yet! <a href='/?page=groupSearch'>Find</a> or <a href='/?page=createGroup'>create</a> one.</h2>";
         } else { ?>
     <div class="glance">
       <h1><?php echo getGroupName($group, $db); ?></h1>

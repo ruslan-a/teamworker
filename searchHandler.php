@@ -25,7 +25,7 @@ if ($searchTerm != "") {
       // echo $skill;
       if (in_array($skill, array_map('trim', explode(',', $row['skills'])))) {
         $inArray = true;
-        echo 'found in array';
+        // echo 'found in array';
       }
     }
     if($inArray == false) {
