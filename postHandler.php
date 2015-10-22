@@ -67,7 +67,7 @@ function createNewPost($db, $group, $user, $content, $admin) {
       $content = $content." <a href='http://$fullURI' download>[download attachment]</a>";
     }
   } else {
-    echo "no file to upload";
+    // echo "no file to upload";
   }
 
 

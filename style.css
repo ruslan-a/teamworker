@@ -510,9 +510,14 @@ form.mini input[type="submit"]{
 
 .postTag {
     background: #2785c7;
-    padding: 4px;
+    padding: 5px 10px 5px 10px;
     color: #fff;
-    font-size: 0.8;
+    font-size: 0.6em;
+    position: relative;
+    text-transform: uppercase;
+    top: -3px;
+    display: inline-block;
+    border-radius: 1em;
 }
 
 /*ADMIN STYLES*/

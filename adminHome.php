@@ -38,7 +38,6 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
       <tr>
           <td><?=$row['name']?></td>
           <td><?=$row['projectType']?></td>
-          <td><a class="button" href="list.php?action=addMeToExisting&amp;group=<?=$row['id']?>">Join Group</a></td>
       </tr>
       <?php } ?>
     </table>
