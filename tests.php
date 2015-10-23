@@ -3,12 +3,12 @@
 
   function testGetGroupId() {
     include 'groupHandler.php';
-    echo getGroupId('cool cat group', $db);
+    echo getGroupId('Group Name', $db);
   }
 
   function testNewPost($db) {
     include 'postHandler.php';
-    echo createNewPost($db, 12, 1, 'hello ass');
+    echo createNewPost($db, 12, 1, 'Testing');
   }
 
   include 'groupHandler.php';

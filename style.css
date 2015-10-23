@@ -97,6 +97,10 @@ a:hover{
     background-color: #2785c7;
 }
 
+.button:hover {
+    opacity: 0.8;
+}
+
 .left {
     float: left;
 }
@@ -179,6 +183,12 @@ form:not(.mini) input[type="submit"]{
     box-sizing: border-box;
     margin:8px 0;
 }
+
+input[type="submit"]:hover {
+    transition: opacity 0.4s;
+    opacity: 0.8;
+}
+
 label.check{
     width:235px;
     font-size:0.8em;
@@ -317,12 +327,13 @@ form#login input[type="submit"]{
     text-transform: uppercase;
 }
 
-form#login input[type="submit"]:hover {
+input[type="submit"]:hover {
     transition: background 400ms;
     background: #14A7FF;
 }
 
-form#login input[type="submit"]:active {
+input[type="submit"]:active {
+
     background: #2785c7;
 }
 
@@ -497,6 +508,10 @@ form.mini input[type="submit"]{
 
 .post h4 {
     margin: 0;
+}
+
+.post h4 a {
+    color: #444;
 }
 
 .post p {

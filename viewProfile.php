@@ -36,7 +36,6 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
         echo '<h2 class="message">Profile Updated!</h2>';
       } ?>
       <h1><?=$userName?></h1>
-      <h2><?=$userEmail?></h2>
       <table>
         <tr><td>Real Name</td> <td><?=$realName?></td></tr>
         <tr><td>Display Name</td> <td><?=$userName?></td></tr>

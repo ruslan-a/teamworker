@@ -32,7 +32,6 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
       <tr>
           <th>Name</th>
           <th>Preferred Project Type</th>
-          <th>Actions</th>
       </tr>
       <?php foreach ($result as $row) { ?>
       <tr>
@@ -63,6 +62,7 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
         ?>
           <tr>
             <td>
+              <a href="/?page=viewProfile&amp;id=<?=$a['id']?>">
               <?php   
                 if($a['displayName'] == "") {
                     echo $a['name'];
@@ -70,12 +70,12 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
                     echo $a['displayName'];
                   } 
               ?>
+              </a>
             </td>
             <td><?=$a['mainArea']?></td>
             <td>
-            <?php if($a['id'] != $_SESSION['id'] && $groupLeader == true) { // check if person is self or leader dont display remove button ?>
             <a class="button" href="?action=remove&amp;user=<?=$a['id']?>" onclick="return confirm('Remove <?=$a['name']?>?')")>Remove from group</a>
-            <?php } }// end check for self, leader ?></td>
+            <A class="button" href="?action=setLeader&amp;user=<?=$a['id']?>" onclick="return confirm('Set <?=$a['name']?> as group leader?')">Set as Leader</A>            <?php } ?></td>
           </tr>
     </table>
   </div>

@@ -20,13 +20,6 @@ function createGroup($groupName, $description, $type, $userId, $db) {
   strip_tags($description);
   strip_tags($type);
 
-// tHIS IS BROKEN FIX IT
-//    $checkIfEmailExists = mysql_query("SELECT email from users WHERE email = '$email'");
-
-//    if(mysql_num_rows($checkIfEmailExists) > 0) {
-//        header('Location: /register.php?error=exists');
-//   }
-
   $qString = ('INSERT INTO groups (name, description, projectType) VALUES (:name, :description, :type)');
   $stm = $db -> prepare($qString);
 
@@ -38,7 +31,6 @@ function createGroup($groupName, $description, $type, $userId, $db) {
     }
   } else {
     print_r($stm->errorInfo());
-    //echo "<meta http-equiv='REFRESH' content='0;url=?error=db'>";
   }
 }
 
@@ -47,13 +39,6 @@ function updateGroup($groupId, $groupName, $description, $type, $db) {
   strip_tags($groupName);
   strip_tags($description);
   strip_tags($type);
-
-// tHIS IS BROKEN FIX IT
-//    $checkIfEmailExists = mysql_query("SELECT email from users WHERE email = '$email'");
-
-//    if(mysql_num_rows($checkIfEmailExists) > 0) {
-//        header('Location: /register.php?error=exists');
-//   }
 
   $qString = ('UPDATE groups SET name = :name, description = :description, projectType = :type WHERE id = :groupId');
   $stm = $db -> prepare($qString);
@@ -66,7 +51,6 @@ function updateGroup($groupId, $groupName, $description, $type, $db) {
     }
   } else {
     print_r($stm->errorInfo());
-    //echo "<meta http-equiv='REFRESH' content='0;url=?error=db'>";
   }
 }
 
@@ -79,7 +63,8 @@ function removeFromGroup($userId, $db, $group) {
   $statement -> bindValue(':userId', $userId);
 
   // execute query and print error message if not
-  if (!$statement -> execute()) { print_r($stm->errorInfo());}
+  if (!$statement -> execute()) { print_r($stm->errorInfo()); return false; } else { 
+  return true; }
 }
 
 function addToGroup($userId, $db, $group, $leader) {

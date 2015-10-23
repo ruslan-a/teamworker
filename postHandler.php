@@ -27,7 +27,8 @@ function renderGroupPosts($groupPosts, $db) {
   echo '<div class="scrollContainer">';
   foreach ($groupPosts as $a) { 
     ?> <div class="post">
-      <h4><?php echo getUserName($a['userId'], $db); ?></h4>
+
+      <h4><a href="/?page=viewProfile&amp;id=<?=$a['userId']?>"><?php echo getUserName($a['userId'], $db); ?></a></h4>
       <p><?=$a['content'];?></p>
       <a class="timestamp"><?=$a['timestamp'];?></a>
       <?php if($a['admin'] == 1) {

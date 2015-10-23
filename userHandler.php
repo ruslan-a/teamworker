@@ -39,7 +39,7 @@ function getUserName($userId, $db) {
   $statement -> bindValue(':userId', $userId);
 
   // execute query and print error message if not
-  if (!$statement -> execute()) { print_r($stm->errorInfo()); 
+  if (!$statement -> execute()) { return flse; print_r($stm->errorInfo()); 
   } else {
    $result = $statement -> fetch(PDO::FETCH_ASSOC);
    return $result['name']; 
@@ -52,7 +52,7 @@ function getUserId($userName, $db) {
   $statement -> bindValue(':userName', $userName);
 
   // execute query and print error message if not
-  if (!$statement -> execute()) { print_r($stm->errorInfo()); 
+  if (!$statement -> execute()) { return false; print_r($stm->errorInfo()); 
   } else {
    $result = $statement -> fetch(PDO::FETCH_ASSOC);
    return $result['id']; 

@@ -2,25 +2,6 @@
 // Only render this page if it's included in index.php, not accessed by URL
 if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
 
-<?php
-  //action handler
-  if (isset($_GET['action']) && $_GET['action'] == 'remove') {
-    removeFromGroup($_GET['user'], $db, $group);
-    echo "<meta http-equiv='REFRESH' content='0;url=/?page=group'>";
-  } else if (isset($_GET['action']) && $_GET['action'] == 'add') {
-    addToGroup($_GET['user'], $db, $group, false);
-  } else if (isset($_GET['action']) && $_GET['action'] == 'addMeToExisting') {
-    if(addToGroup($userId, $db, $_GET['group'], false)) {
-      echo "<meta http-equiv='REFRESH' content='0;url=/?page=group'>";
-    }
-  } else if (isset($_GET['action']) && $_GET['action'] == 'editGroup') {
-    updateGroup($group, $_POST['name'], $_POST['description'], $_POST['type'], $db);
-  } else if (isset($_GET['action']) && $_GET['action'] == 'setLeader') {
-    setLeader($group, $_GET['user'], $userId, $db);
-    echo "<meta http-equiv='REFRESH' content='0;url=/?page=group'>";
-  }
-?>
-
 <body>
   <main>
     <?php include "header.inc"; ?>

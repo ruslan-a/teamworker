@@ -44,9 +44,10 @@ if(!defined('includeConst')) { die('Direct access not permitted'); } ?>
           </tr>
           <tr><td>Preferred Grade</td>  <td><input type="text" name="goal" value="<?=$goal?>"></td></tr>
           <tr><td>Current GPA</td>  <td><input type="text" name="gpa" value="<?=$gpa?>"></td></tr>
-          <tr><td>Registered Tutorial</td>  <td></td></tr>
           <tr><td>Skills (comma separated)</td>  <td><input type="text" name="skills" value="<?=$skills?>"></td></tr>
           <tr><td>About Me</td> <td><input type="text" name="bio" value="<?=$bio?>"></td></tr>
+          <tr><td>Password</td>  <td><input type="password" ></td></tr>
+          <tr><td>Confirm Password</td>  <td><input type="password"></td></tr>
         </table>
       </form>
     </div>

@@ -17,6 +17,15 @@
           <option value="Business">Business</option>
         </select>
         <br><br>
+        <label for="gpa">GPA</label>
+        <select id="gpa" name="gpa">
+          <option value="">Any</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        <br><br>
         <input type="submit" />
       </form>   
     </div>

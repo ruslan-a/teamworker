@@ -9,6 +9,7 @@
           <th>Name</th>
           <th>Main Expertise</th>
           <th>Skills</th>
+          <th>GPA</th>
           <th>Actions</th>
         </tr>
         <?php foreach ($result as $a) { ?>
@@ -18,6 +19,7 @@
           </a></td>
           <td><?=$a['mainArea']?></td>
           <td><?=$a['skills']?></td>
+          <td><?=$a['gpa']?></td>
           <td><a class="button" href="?page=group&amp;action=add&amp;user=<?=$a['id']?>">Add to group</a></td>
         </tr>
         <?php } ?>
